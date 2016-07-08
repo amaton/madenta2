@@ -1,0 +1,1 @@
+/var/www/dentacom/vendor/magento/theme-frontend-blank/web/js/responsive.js

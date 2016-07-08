@@ -1,0 +1,1 @@
+/var/www/dentacom/lib/web/jquery/jquery.tabs.js
