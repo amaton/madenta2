@@ -1,1 +1,0 @@
-/var/www/dentacom/lib/web/mage/backend/tabs.js
