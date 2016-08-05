@@ -1,0 +1,100 @@
+[class^="porto-icon-"], [class*=" porto-icon-"] {
+  font-family: 'porto-icons';
+  font-style: normal;
+  font-weight: normal;
+ 
+  /* fix buttons height */
+  line-height: 1em;
+ 
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+}
+ 
+.porto-icon-up-open { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf800;&nbsp;'); }
+.porto-icon-left-open { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf801;&nbsp;'); }
+.porto-icon-right-open { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf802;&nbsp;'); }
+.porto-icon-down-open { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf803;&nbsp;'); }
+.porto-icon-up-open-mini { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf804;&nbsp;'); }
+.porto-icon-left-open-mini { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf805;&nbsp;'); }
+.porto-icon-right-open-mini { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf806;&nbsp;'); }
+.porto-icon-down-open-mini { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf807;&nbsp;'); }
+.porto-icon-up-open-big { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf808;&nbsp;'); }
+.porto-icon-left-open-big { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf809;&nbsp;'); }
+.porto-icon-right-open-big { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf80a;&nbsp;'); }
+.porto-icon-down-open-big { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf80b;&nbsp;'); }
+.porto-icon-up-open-huge { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf80c;&nbsp;'); }
+.porto-icon-left-open-huge { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf80d;&nbsp;'); }
+.porto-icon-right-open-huge { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf80e;&nbsp;'); }
+.porto-icon-down-open-huge { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf80f;&nbsp;'); }
+.porto-icon-angle-up { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf810;&nbsp;'); }
+.porto-icon-angle-left { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf811;&nbsp;'); }
+.porto-icon-angle-right { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf812;&nbsp;'); }
+.porto-icon-angle-down { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf813;&nbsp;'); }
+.porto-icon-basket { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf814;&nbsp;'); }
+.porto-icon-mini-cart { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf815;&nbsp;'); }
+.porto-icon-heart { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf816;&nbsp;'); }
+.porto-icon-search { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf818;&nbsp;'); }
+.porto-icon-cancel { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf819;&nbsp;'); }
+.porto-icon-cancel-mini { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf81a;&nbsp;'); }
+.porto-icon-up-dir { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf820;&nbsp;'); }
+.porto-icon-left-dir { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf821;&nbsp;'); }
+.porto-icon-right-dir { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf822;&nbsp;'); }
+.porto-icon-down-dir { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf823;&nbsp;'); }
+.porto-icon-phone { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf824;&nbsp;'); }
+.porto-icon-pencil { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf825;&nbsp;'); }
+.porto-icon-pencil-mini { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf826;&nbsp;'); }
+.porto-icon-menu { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf827;&nbsp;'); }
+.porto-icon-location { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf828;&nbsp;'); }
+.porto-icon-mail { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf829;&nbsp;'); }
+.porto-icon-clock { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf82a;&nbsp;'); }
+.porto-icon-ok { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf82b;&nbsp;'); }
+.porto-icon-plus-squared-alt { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf82c;&nbsp;'); }
+.porto-icon-minus-squared-alt { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf82d;&nbsp;'); }
+.porto-icon-plus-squared { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf82e;&nbsp;'); }
+.porto-icon-minus-squared { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf82f;&nbsp;'); }
+.porto-icon-truck { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf830;&nbsp;'); }
+.porto-icon-dollar { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf831;&nbsp;'); }
+.porto-icon-lifebuoy { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf832;&nbsp;'); }
+.porto-icon-facebook { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf833;&nbsp;'); }
+.porto-icon-twitter { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf834;&nbsp;'); }
+.porto-icon-linkedin-squared { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf835;&nbsp;'); }
+.porto-icon-pinterest { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf836;&nbsp;'); }
+.porto-icon-gplus { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf837;&nbsp;'); }
+.porto-icon-youtube { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf838;&nbsp;'); }
+.porto-icon-th { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf839;&nbsp;'); }
+.porto-icon-th-list { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf83a;&nbsp;'); }
+.porto-icon-chart-bar { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf83b;&nbsp;'); }
+.porto-icon-heart-empty { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf83c;&nbsp;'); }
+.porto-icon-up { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf840;&nbsp;'); }
+.porto-icon-left { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf841;&nbsp;'); }
+.porto-icon-down { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf842;&nbsp;'); }
+.porto-icon-right { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf843;&nbsp;'); }
+.porto-icon-star { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf844;&nbsp;'); }
+.porto-icon-star-empty { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf845;&nbsp;'); }
+.porto-icon-ok-circled { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf846;&nbsp;'); }
+.porto-icon-cancel-circled { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf847;&nbsp;'); }
+.porto-icon-help-circled { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf848;&nbsp;'); }
+.porto-icon-info-circled { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf849;&nbsp;'); }
+.porto-icon-attention { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf84a;&nbsp;'); }
+.porto-icon-mobile { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf84b;&nbsp;'); }
+.porto-icon-mail-alt { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf84c;&nbsp;'); }
+.porto-icon-skype { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf84d;&nbsp;'); }
+.porto-icon-doc { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf84e;&nbsp;'); }
+.porto-icon-user { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf850;&nbsp;'); }
+.porto-icon-help { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf851;&nbsp;'); }
+.porto-icon-info { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf852;&nbsp;'); }
+.porto-icon-help-circled-alt { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf853;&nbsp;'); }
+.porto-icon-info-circled-alt { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf854;&nbsp;'); }
+.porto-icon-chevron-right { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf855;&nbsp;'); }
+.porto-icon-chevron-left { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf856;&nbsp;'); }
+.porto-icon-reply { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf857;&nbsp;'); }
+.porto-icon-paper-plane { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf858;&nbsp;'); }
+.porto-icon-magnify { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf859;&nbsp;'); }
+.porto-icon-zoom-in { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf85a;&nbsp;'); }
+.porto-icon-zoom-out { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf85b;&nbsp;'); }
+.porto-icon-chat { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf860;&nbsp;'); }
+.porto-icon-folder { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf861;&nbsp;'); }
+.porto-icon-folder-open { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf862;&nbsp;'); }
+.porto-icon-tag { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf863;&nbsp;'); }
+.porto-icon-tags { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf864;&nbsp;'); }
+.porto-icon-calendar { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf865;&nbsp;'); }

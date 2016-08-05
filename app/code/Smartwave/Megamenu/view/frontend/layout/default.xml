@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright © 2016 SW-THEMES. All rights reserved.
+*/
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="catalog.topnav" remove="true"/>
+        <referenceContainer name="page.top">
+            <block class="Smartwave\Megamenu\Block\Topmenu" name="sw.topnav" template="Smartwave_Megamenu::topmenu.phtml" before="-"/>
+        </referenceContainer>
+    </body>
+</page>

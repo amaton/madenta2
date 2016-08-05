@@ -1,0 +1,85 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php if ($detailedInfoGroup = $block->getGroupChildNames('detailed_info', 'getChildHtml')):?>
+<?php
+    $porto_helper = $this->helper('Smartwave\Porto\Helper\Data');
+    $_helper = $this->helper('Smartwave\Porto\Helper\Customtabs');
+    $product_config = $porto_helper->getConfig('porto_settings/product');
+    $tab_style = "";
+    if(isset($product_config['tab_style']) && $product_config['tab_style'])
+        $tab_style = $product_config['tab_style'];
+?>
+    <div class="product info detailed <?php echo $tab_style; ?>">
+        <?php $layout = $block->getLayout(); ?>
+        <div class="product data items" data-mage-init='{"tabs":{"openedState":"active"}}'>
+            <?php foreach ($detailedInfoGroup as $name):?>
+                <?php
+                    $html = $layout->renderElement($name);
+                    if (!trim($html)) {
+                        continue;
+                    }
+                    $alias = $layout->getElementAlias($name);
+                    $label = $block->getChildData($alias, 'title');
+                ?>
+                <div class="data item title"
+                     aria-labeledby="tab-label-<?php /* @escapeNotVerified */ echo $alias;?>-title"
+                     data-role="collapsible" id="tab-label-<?php /* @escapeNotVerified */ echo $alias;?>">
+                    <a class="data switch"
+                       tabindex="-1"
+                       data-toggle="switch"
+                       href="#<?php /* @escapeNotVerified */ echo $alias; ?>"
+                       id="tab-label-<?php /* @escapeNotVerified */ echo $alias;?>-title">
+                        <?php /* @escapeNotVerified */ echo $label; ?>
+                    </a>
+                </div>
+                <div class="data item content" id="<?php /* @escapeNotVerified */ echo $alias; ?>" data-role="content">
+                    <?php /* @escapeNotVerified */ echo $html; ?>
+                </div>
+            <?php endforeach;?>
+            <?php
+                if($custom_cms_tabs = $_helper->getCustomTabs($block->getProduct())) {
+                    $i = 1;
+                    foreach($custom_cms_tabs as $_item) {
+            ?>
+                <div class="data item title"
+                     aria-labeledby="tab-label-<?php /* @escapeNotVerified */ echo "custom-".$i;?>-title"
+                     data-role="collapsible" id="tab-label-<?php /* @escapeNotVerified */ echo "custom-".$i;?>">
+                    <a class="data switch"
+                       tabindex="-1"
+                       data-toggle="switch"
+                       href="#<?php /* @escapeNotVerified */ echo "custom-".$i; ?>"
+                       id="tab-label-<?php /* @escapeNotVerified */ echo "custom-".$i;?>-title">
+                        <?php /* @escapeNotVerified */ echo $_item['tab_title']; ?>
+                    </a>
+                </div>
+                <div class="data item content" id="<?php /* @escapeNotVerified */ echo "custom-".$i; ?>" data-role="content">
+                    <?php /* @escapeNotVerified */ echo $_item['tab_content']; ?>
+                </div>
+            <?php
+                        $i++;
+                    }
+                }
+            ?>
+        </div>
+    <?php if($tab_style && $tab_style == "vertical"): ?>
+        <script type="text/javascript">
+            require([
+                'jquery'
+            ], function ($) {
+                $(document).ready(function(){
+                    $(".product.info.detailed.vertical .product.data.items .data.item.title").off("classadded").on("classadded",function(){
+                        $(this).parent().css("min-height",$(this).next().outerHeight()+"px");
+                    });
+                });
+            });
+        </script>    
+    <?php endif; ?>
+    </div>
+<?php endif; ?>
