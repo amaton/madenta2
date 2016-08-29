@@ -10,6 +10,7 @@
             <argument name="commands" xsi:type="array">
                 <item name="CatalogMigration" xsi:type="object">Ara\Migration\Console\Command\CatalogMigration</item>
                 <item name="ProductsMigration" xsi:type="object">Ara\Migration\Console\Command\ProductsMigration</item>
+                <item name="ConfigurableProductsMigration" xsi:type="object">Ara\Migration\Console\Command\ConfigurableProductsMigration</item>
             </argument>
         </arguments>
     </type>

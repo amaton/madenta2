@@ -6,8 +6,9 @@ namespace Ara\Migration\Console\Command;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 
-class ProductsMigration extends \Symfony\Component\Console\Command\Command
+class ConfigurableProductsMigration extends \Symfony\Component\Console\Command\Command
 {
     const DB_HOST = '127.0.0.1';
     const DB_NAME = 'denta';
@@ -36,26 +37,37 @@ class ProductsMigration extends \Symfony\Component\Console\Command\Command
      * @var \Ara\Migration\Helper\CustomAttribute
      */
     private $attributeHelper;
+    /**
+     * @var \Magento\Catalog\Api\ProductRepositoryInterface
+     */
+    private $productRepository;
 
     /**
      * @param \Magento\Catalog\Model\ProductFactory $productFactory
      * @param \Magento\Catalog\Model\ResourceModel\Product $productResource
      * @param \Magento\Framework\App\State $state
      * @param \Ara\Migration\Helper\CustomAttribute $attributeHelper
+     * @param \Magento\Catalog\Api\ProductRepositoryInterface $productRepository
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function __construct(
         \Magento\Catalog\Model\ProductFactory $productFactory,
         \Magento\Catalog\Model\ResourceModel\Product $productResource,
         \Magento\Framework\App\State $state,
-        \Ara\Migration\Helper\CustomAttribute $attributeHelper
+        \Ara\Migration\Helper\CustomAttribute $attributeHelper,
+        \Magento\Catalog\Api\ProductRepositoryInterface $productRepository
     )
     {
         $this->productFactory = $productFactory;
         $this->productResource = $productResource;
-        $state->setAreaCode('frontend');
+        try {
+            $state->getAreaCode();
+        } catch(\Magento\Framework\Exception\LocalizedException $e) {
+            $state->setAreaCode('frontend');
+        }
         $this->attributeHelper = $attributeHelper;
         parent::__construct();
+        $this->productRepository = $productRepository;
     }
 
     /**
@@ -63,7 +75,7 @@ class ProductsMigration extends \Symfony\Component\Console\Command\Command
      */
     protected function configure()
     {
-        $this->setName('migration:products');
+        $this->setName('migration:configurableProducts');
         $this->setDescription('Migrate products');
     }
 
@@ -73,36 +85,42 @@ class ProductsMigration extends \Symfony\Component\Console\Command\Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $imageSourceUrl = 'http://denta.com.ua/uploads/shop/products/large/';
+//        $brands = $this->getSqlData($this->getBrandsSql());
+//        foreach ($brands as $brand) {
+//            $this->attributeHelper->createOrGetId(self::ATTRIBUTE_MANUFACTURER, $brand['name']);
+//        }
+
         $res = $this->getSqlData($this->getQuerySql());
-        $brands = $this->getSqlData($this->getBrandsSql());
-        foreach ($brands as $brand) {
-            $this->attributeHelper->createOrGetId(self::ATTRIBUTE_MANUFACTURER, $brand['name']);
-        }
-        $this->attributeHelper->addAttributeToAllAttributeSets(
-            self::ATTRIBUTE_MANUFACTURER, self::PRODUCT_DETAILS_ATTRIBUTE_GROUP
-        );
+
         foreach ($res as $item) {
+            $product = $this->productFactory->create();
+            $product->isObjectNew(true);
+
+            try {
+                $productToDelete = $this->productRepository->getById($item['id']);
+                $this->productRepository->delete($productToDelete);
+            } catch (\Exception $e) {
+                // Nothing to remove
+            }
             if (!empty($item['image'])) {
                 $this->downloadRemoteFileWithCurl(
                     $imageSourceUrl . $item['image'],
                     'pub/media/tmp/catalog/product/' . $item['image']
                 );
             }
-            $product = $this->productFactory->create();
-            $product->isObjectNew(true);
 
             $product
+                ->setTypeId(Configurable::TYPE_CODE)
                 ->setId($item['id'])
-                ->setTypeId(\Magento\Catalog\Model\Product\Type::TYPE_SIMPLE)
                 ->setAttributeSetId(self::DEFAULT_ATTRIBUTE_SET)
                 ->setWebsiteIds([1])
                 ->setName($item['name'])
                 ->setSku($item['sku'])
+                ->setVisibility(\Magento\Catalog\Model\Product\Visibility::VISIBILITY_BOTH)
+                ->setStatus($item['status'])
                 ->setPrice($item['price'])
                 ->setDescription($item['description'])
                 ->setShortDescription($item['short_description'])
-                ->setVisibility(\Magento\Catalog\Model\Product\Visibility::VISIBILITY_BOTH)
-                ->setStatus($item['status'])
                 ->setCategoryIds(explode(',', $item['category_ids']))
                 ->setStockData(
                     [
@@ -120,7 +138,6 @@ class ProductsMigration extends \Symfony\Component\Console\Command\Command
                     $this->attributeHelper->getOptionId(self::ATTRIBUTE_MANUFACTURER, $item['brand'])
                 );
 
-
             if (!empty($item['image'])) {
                 $product->addImageToMediaGallery(
                     'tmp/catalog/product/' . $item['image'],
@@ -131,7 +148,7 @@ class ProductsMigration extends \Symfony\Component\Console\Command\Command
             }
             $product->save();
         }
-        $output->writeln("<info>Products Migration has been finished</info>");
+        $output->writeln("<info>Configurable Products Migration has been finished</info>");
     }
 
     /**
@@ -162,6 +179,7 @@ select
  spv.product_id as id,
  spv.number as sku,
  spi.name as name,
+-- spvi.name as variation_name,
  spv.price as price,
  sp.created as created_at,
  sp.updated as updated_at,
@@ -171,14 +189,14 @@ select
  spi.short_description as short_description,
  spi.full_description as description,
  spv.mainImage as image,
- group_concat(spc.category_id) as category_ids,
+ group_concat(distinct spc.category_id) as category_ids,
 sbi.name as brand
 
 -- spv.currency,
 -- spv.price_in_main,
 
 from shop_product_variants spv
-join shop_product_variants_i18n spvi on spv.id = spvi.id
+-- join shop_product_variants_i18n spvi on spv.id = spvi.id
 join shop_products sp on sp.id = spv.product_id
 join shop_products_i18n spi on sp.id = spi.id
 join shop_product_categories spc on sp.id = spc.product_id
@@ -186,14 +204,14 @@ join shop_brands_i18n sbi on sp.brand_id = sbi.id
 where
 -- spv.mainImage is not null
 -- and
-sp.name_main_variant is null
-and sp.add_group is null
-and spvi.name = ''
- and sp.id = 1137
+(sp.name_main_variant is not null  or sp.add_group is not null)
+-- and spvi.name = ''
+-- and sp.id = 201
 group by
 spv.product_id,
  spv.number,
  spi.name,
+-- spvi.name,
  spv.price,
  sp.created,
  sp.updated,
@@ -202,15 +220,9 @@ spv.product_id,
  spv.stock,
  spi.short_description,
  spi.full_description,
- spv.mainImage,
+-- spv.mainImage,
  sp.brand_id;
 TAG;
-    }
-
-
-    private function getBrandsSql()
-    {
-        return 'select name  from denta.shop_brands_i18n';
     }
 
     private function downloadRemoteFileWithCurl($file_url, $save_to)
