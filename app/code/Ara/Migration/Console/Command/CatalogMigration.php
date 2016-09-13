@@ -1,6 +1,7 @@
 <?php
 /**
- * @Author Arkadii Chyzhov
+ * @package Ara_Migration
+ * @version draft
  */
 namespace Ara\Migration\Console\Command;
 
@@ -10,7 +11,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class CatalogMigration extends \Symfony\Component\Console\Command\Command
 {
     const DB_HOST = '127.0.0.1';
-    const DB_NAME = 'migration_db';
+    const DB_NAME = 'denta';
     const DB_USER = 'root';
     const DB_PASSWORD = '';
 
@@ -27,12 +28,20 @@ class CatalogMigration extends \Symfony\Component\Console\Command\Command
     /**
      * @param \Magento\Catalog\Model\CategoryFactory $productFactory
      * @param \Magento\Catalog\Model\ResourceModel\Category $productResource
+     * @param \Magento\Framework\App\State $state
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function __construct(
         \Magento\Catalog\Model\CategoryFactory $productFactory,
-        \Magento\Catalog\Model\ResourceModel\Category $productResource
+        \Magento\Catalog\Model\ResourceModel\Category $productResource,
+        \Magento\Framework\App\State $state
     )
     {
+        try {
+            $state->getAreaCode();
+        } catch(\Magento\Framework\Exception\LocalizedException $e) {
+            $state->setAreaCode('frontend');
+        }
         $this->categoryFactory = $productFactory;
         $this->categoryResource = $productResource;
         parent::__construct();

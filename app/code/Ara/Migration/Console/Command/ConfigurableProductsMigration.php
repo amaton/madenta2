@@ -1,12 +1,14 @@
 <?php
 /**
- * @Author Arkadii Chyzhov
+ * @package Ara_Migration
+ * @version draft
  */
 namespace Ara\Migration\Console\Command;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
+use Magento\Eav\Api\Data\AttributeOptionInterface;
 
 class ConfigurableProductsMigration extends \Symfony\Component\Console\Command\Command
 {
@@ -18,6 +20,7 @@ class ConfigurableProductsMigration extends \Symfony\Component\Console\Command\C
     const DEFAULT_ATTRIBUTE_SET = 4;
     const PRODUCT_DETAILS_ATTRIBUTE_GROUP = 7;
     const ATTRIBUTE_MANUFACTURER = 'manufacturer';
+    protected $attributes;
 
     /**
      * @var \Magento\Catalog\Model\ProductFactory
@@ -41,6 +44,38 @@ class ConfigurableProductsMigration extends \Symfony\Component\Console\Command\C
      * @var \Magento\Catalog\Api\ProductRepositoryInterface
      */
     private $productRepository;
+    /**
+     * @var \Magento\CatalogInventory\Model\Stock\ItemFactory
+     */
+    private $stockItemFactory;
+    /**
+     * @var \Magento\ConfigurableProduct\Helper\Product\Options\Factory
+     */
+    private $optionsFactory;
+    /**
+     * @var \Magento\Indexer\Model\Processor
+     */
+    private $processor;
+    /**
+     * @var \Magento\Eav\Setup\EavSetup
+     */
+    private $eavSetup;
+    /**
+     * @var \Magento\Framework\App\Cache\TypeListInterface
+     */
+    private $cacheTypeList;
+    /**
+     * @var \Magento\Framework\App\Cache\Frontend\Pool
+     */
+    private $cacheFrontendPool;
+    /**
+     * @var \Magento\Eav\Model\Config
+     */
+    private $eavConfig;
+    /**
+     * @var \Magento\ConfigurableProduct\Api\LinkManagementInterface
+     */
+    private $linkManagement;
 
     /**
      * @param \Magento\Catalog\Model\ProductFactory $productFactory
@@ -48,14 +83,31 @@ class ConfigurableProductsMigration extends \Symfony\Component\Console\Command\C
      * @param \Magento\Framework\App\State $state
      * @param \Ara\Migration\Helper\CustomAttribute $attributeHelper
      * @param \Magento\Catalog\Api\ProductRepositoryInterface $productRepository
+     * @param \Magento\CatalogInventory\Model\Stock\ItemFactory $stockItemFactory
+     * @param \Magento\ConfigurableProduct\Helper\Product\Options\Factory $optionsFactory
+     * @param \Magento\Indexer\Model\Processor $processor
+     * @param \Magento\Eav\Setup\EavSetup $eavSetup
+     * @param \Magento\Framework\App\Cache\TypeListInterface $cacheTypeList
+     * @param \Magento\Framework\App\Cache\Frontend\Pool $cacheFrontendPool
+     * @param \Magento\Eav\Model\Config $eavConfig
+     * @param \Magento\ConfigurableProduct\Api\LinkManagementInterface $linkManagement
      * @throws \Magento\Framework\Exception\LocalizedException
+     * @internal param \Magento\CatalogInventory\Model\Stock\ItemFactory $stockItem
      */
     public function __construct(
         \Magento\Catalog\Model\ProductFactory $productFactory,
         \Magento\Catalog\Model\ResourceModel\Product $productResource,
         \Magento\Framework\App\State $state,
         \Ara\Migration\Helper\CustomAttribute $attributeHelper,
-        \Magento\Catalog\Api\ProductRepositoryInterface $productRepository
+        \Magento\Catalog\Api\ProductRepositoryInterface $productRepository,
+        \Magento\CatalogInventory\Model\Stock\ItemFactory $stockItemFactory,
+        \Magento\ConfigurableProduct\Helper\Product\Options\Factory $optionsFactory,
+        \Magento\Indexer\Model\Processor $processor,
+        \Magento\Eav\Setup\EavSetup $eavSetup,
+        \Magento\Framework\App\Cache\TypeListInterface $cacheTypeList,
+        \Magento\Framework\App\Cache\Frontend\Pool $cacheFrontendPool,
+        \Magento\Eav\Model\Config $eavConfig,
+        \Magento\ConfigurableProduct\Api\LinkManagementInterface $linkManagement
     )
     {
         $this->productFactory = $productFactory;
@@ -63,11 +115,19 @@ class ConfigurableProductsMigration extends \Symfony\Component\Console\Command\C
         try {
             $state->getAreaCode();
         } catch(\Magento\Framework\Exception\LocalizedException $e) {
-            $state->setAreaCode('frontend');
+            $state->setAreaCode('adminhtml');
         }
         $this->attributeHelper = $attributeHelper;
         parent::__construct();
         $this->productRepository = $productRepository;
+        $this->stockItemFactory = $stockItemFactory;
+        $this->optionsFactory = $optionsFactory;
+        $this->processor = $processor;
+        $this->eavSetup = $eavSetup;
+        $this->cacheTypeList = $cacheTypeList;
+        $this->cacheFrontendPool = $cacheFrontendPool;
+        $this->eavConfig = $eavConfig;
+        $this->linkManagement = $linkManagement;
     }
 
     /**
@@ -85,27 +145,30 @@ class ConfigurableProductsMigration extends \Symfony\Component\Console\Command\C
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $imageSourceUrl = 'http://denta.com.ua/uploads/shop/products/large/';
-//        $brands = $this->getSqlData($this->getBrandsSql());
-//        foreach ($brands as $brand) {
-//            $this->attributeHelper->createOrGetId(self::ATTRIBUTE_MANUFACTURER, $brand['name']);
-//        }
 
-        $res = $this->getSqlData($this->getQuerySql());
+       $res = $this->getSqlData($this->getQuerySql());
 
         foreach ($res as $item) {
             $product = $this->productFactory->create();
             $product->isObjectNew(true);
 
             try {
+                /** @var \Magento\Catalog\Api\Data\ProductInterface $productToDelete */
                 $productToDelete = $this->productRepository->getById($item['id']);
+                $children = $this->linkManagement->getChildren($productToDelete->getSku());
+                foreach ($children as $child) {
+                    $this->productRepository->delete($child);
+                }
                 $this->productRepository->delete($productToDelete);
             } catch (\Exception $e) {
                 // Nothing to remove
             }
-            if (!empty($item['image'])) {
+
+            $imagePath = BP . '/pub/media/tmp/catalog/product/' . $item['image'];
+            if (!empty($item['image']) && !file_exists($imagePath)) {
                 $this->downloadRemoteFileWithCurl(
                     $imageSourceUrl . $item['image'],
-                    'pub/media/tmp/catalog/product/' . $item['image']
+                    $imagePath
                 );
             }
 
@@ -146,6 +209,76 @@ class ConfigurableProductsMigration extends \Symfony\Component\Console\Command\C
                     false
                 );
             }
+            $product->save();
+        }
+        foreach ($res as $item) {
+            $attributeCode = $this->getAttributeCode($item['id']);
+            if ($attributeCode == '0') {
+                continue;
+            }
+            $attribute = $this->attributeHelper->getAttribute($attributeCode);
+            $attributeValues = [];
+            $associatedProductIds = [];
+
+            /** @var AttributeOptionInterface[] $options */
+            $options = $attribute->getOptions();
+            array_shift($options); //remove the first option which is empty
+
+            foreach ($options as $option) {
+                $simpleProduct = $this->productFactory->create();
+                $simpleProduct->isObjectNew(true);
+                $simpleProduct->setTypeId(\Magento\Catalog\Model\Product\Type::TYPE_SIMPLE)
+                    ->setAttributeSetId(self::DEFAULT_ATTRIBUTE_SET)
+                    ->setWebsiteIds([1])
+                    ->setName($item['name'] . '-' . $option->getLabel())
+                    ->setSku($item['sku'] . '-' . $option->getLabel())
+                    ->setPrice($item['price'])
+                    ->setData($attributeCode, $option->getValue())
+                    ->setVisibility(\Magento\Catalog\Model\Product\Visibility::VISIBILITY_NOT_VISIBLE)
+                    ->setStatus($item['status']);
+
+                $simpleProduct->save();
+
+                /** @var \Magento\CatalogInventory\Model\Stock\Item $stockItem */
+                $stockItem = $this->stockItemFactory->create();
+                $stockItem->load($simpleProduct->getId(), 'product_id');
+
+                if (!$stockItem->getProductId()) {
+                    $stockItem->setProductId($simpleProduct->getId());
+                }
+                $stockItem->setUseConfigManageStock(1);
+                $stockItem->setQty($item['qty']);
+                $stockItem->setIsQtyDecimal(0);
+                $stockItem->setIsInStock(1);
+                $stockItem->save();
+
+                $attributeValues[] = [
+                    'label' => 'test',
+                    'attribute_id' => $attribute->getId(),
+                    'value_index' => $option->getValue(),
+                ];
+                $associatedProductIds[] = $simpleProduct->getId();
+            }
+
+
+            $configurableAttributesData = [
+                [
+                    'attribute_id' => $attribute->getId(),
+                    'code' => $attribute->getAttributeCode(),
+                    'label' => $attribute->getStoreLabel(),
+                    'position' => '0',
+                    'values' => $attributeValues,
+                ],
+            ];
+
+            $configurableOptions = $this->optionsFactory->create($configurableAttributesData);
+
+            $product = $this->productFactory->create()->load($item['id']);
+            $extensionConfigurableAttributes = $product->getExtensionAttributes();
+            $extensionConfigurableAttributes->setConfigurableProductOptions($configurableOptions);
+            $extensionConfigurableAttributes->setConfigurableProductLinks($associatedProductIds);
+
+            $product->setExtensionAttributes($extensionConfigurableAttributes);
             $product->save();
         }
         $output->writeln("<info>Configurable Products Migration has been finished</info>");
@@ -196,7 +329,7 @@ sbi.name as brand
 -- spv.price_in_main,
 
 from shop_product_variants spv
--- join shop_product_variants_i18n spvi on spv.id = spvi.id
+join shop_product_variants_i18n spvi on spv.id = spvi.id
 join shop_products sp on sp.id = spv.product_id
 join shop_products_i18n spi on sp.id = spi.id
 join shop_product_categories spc on sp.id = spc.product_id
@@ -205,8 +338,8 @@ where
 -- spv.mainImage is not null
 -- and
 (sp.name_main_variant is not null  or sp.add_group is not null)
--- and spvi.name = ''
--- and sp.id = 201
+ and spvi.name <> ''
+ -- and sp.id > 395
 group by
 spv.product_id,
  spv.number,
@@ -225,6 +358,41 @@ spv.product_id,
 TAG;
     }
 
+    /**
+     * @return string
+     */
+    private function getOneAttributeQuerySql()
+    {
+        return <<<TAG
+select
+IFNULL(TRIM(t.name_main_variant), 'Цвет') as attribute_name,
+ t.attribute_value, group_concat(t.id) as product_id,
+ if(t.number <> '', group_concat(t.number), CONCAT(group_concat(t.id),'001')) as product_sku
+ -- , group_concat(distinct t.category_id)
+from
+(
+select
+	spv.number,
+	sp.id,
+	sp.name_main_variant,
+	count(*),
+	group_concat(spvi.name order by spvi.id SEPARATOR '|') as attribute_value,
+	group_concat(distinct sp.category_id) as category_id
+from denta.shop_products sp
+inner join denta.shop_product_variants spv on sp.id = spv.product_id
+inner join  denta.shop_product_variants_i18n spvi on spv.id = spvi.id
+where
+	spvi.name <> ''
+	and (sp.add_group is null or sp.add_group = 'a:0:{}')
+group by sp.id, sp.name_main_variant
+having count(*) > 1
+order by spv.number desc
+) t
+group by t.name_main_variant, t.attribute_value
+TAG;
+    }
+
+
     private function downloadRemoteFileWithCurl($file_url, $save_to)
     {
         $ch = curl_init();
@@ -234,9 +402,25 @@ TAG;
         $file_content = curl_exec($ch);
         curl_close($ch);
 
-        $downloaded_file = fopen($save_to, 'w');
+        $downloaded_file = fopen($save_to, 'w+');
         fwrite($downloaded_file, $file_content);
         fclose($downloaded_file);
 
+    }
+
+    protected function getAttributeCode($productId)
+    {
+        if ($this->attributes === null) {
+            $attributesRes = $this->getSqlData($this->getOneAttributeQuerySql());
+            foreach ($attributesRes as $row) {
+                $ids = explode(',', $row['product_id']);
+                foreach($ids as $id) {
+                    $attrString = strtr($this->attributeHelper->translit($row['attribute_name']), '/', '_');
+                    $attrName =  implode('_', explode(' ', $attrString)) . '_' . $ids[0];
+                    $this->attributes[$id] = $attrName;
+                }
+            }
+        }
+        return isset($this->attributes[$productId]) ? $this->attributes[$productId] : 0;
     }
 }

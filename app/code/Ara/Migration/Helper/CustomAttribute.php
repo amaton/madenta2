@@ -96,6 +96,28 @@ class CustomAttribute extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
+     * Delete attribute by code.
+     *
+     * @param string $attributeCode
+     * @return bool
+     */
+    public function deleteAttribute($attributeCode)
+    {
+        return $this->attributeRepository->delete($attributeCode);
+    }
+
+    /**
+     * @param string|integer $entityTypeId
+     * @param string $code
+     * @param array $attr
+     * @return \Magento\Eav\Setup\EavSetup
+     */
+    public function addAttribute($entityTypeId, $code, array $att)
+    {
+        return $this->getCategorySetup()->addAttribute($entityTypeId, $code, $att);
+    }
+
+    /**
      * Find or create a matching attribute option
      *
      * @param string $attributeCode Attribute the option should exist in
@@ -230,4 +252,73 @@ class CustomAttribute extends \Magento\Framework\App\Helper\AbstractHelper
 
         return true;
     }
+
+    /**
+     * @param string $attributeCode
+     * @param string $attributeGroupCode
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function addAttributeToAttributeSet($attributeCode, $attributeSetId, $attributeGroupCode)
+    {
+        /** @var \Magento\Eav\Model\Entity\Type $entityType */
+        $entityType = $this->eavTypeFactory->create()->loadByCode('catalog_product');
+        /** @var \Magento\Eav\Model\Entity\Attribute $attribute */
+        $attribute = $this->attributeFactory->create()->loadByCode($entityType->getId(), $attributeCode);
+
+        if (!$attribute->getId()) {
+            return false;
+        }
+
+        $attributeSet = $this->attributeSetFactory->create()->load($attributeSetId);
+
+        /** @var \Magento\Eav\Model\Entity\Attribute\Group $group */
+        $group = $this->attributeGroupFactory->create()->getCollection()
+            ->addFieldToFilter('attribute_group_code', ['eq' => $attributeGroupCode])
+            ->addFieldToFilter('attribute_set_id', ['eq' => $attributeSet->getId()])
+            ->getFirstItem();
+
+        $groupId = $group->getId() ?: $attributeSet->getDefaultGroupId();
+
+        // Assign:
+        $this->attributeManagement->assign(
+            'catalog_product',
+            $attributeSet->getId(),
+            $groupId,
+            $attributeCode,
+            $attributeSet->getCollection()->count() * 10
+        );
+        return true;
+    }
+
+    // Транслитерация строк.
+    public  function translit($string)
+    {
+        $converter = array(
+            'а' => 'a', 'б' => 'b', 'в' => 'v',
+            'г' => 'g', 'д' => 'd', 'е' => 'e',
+            'ё' => 'e', 'ж' => 'zh', 'з' => 'z',
+            'и' => 'i', 'й' => 'y', 'к' => 'k',
+            'л' => 'l', 'м' => 'm', 'н' => 'n',
+            'о' => 'o', 'п' => 'p', 'р' => 'r',
+            'с' => 's', 'т' => 't', 'у' => 'u',
+            'ф' => 'f', 'х' => 'h', 'ц' => 'c',
+            'ч' => 'ch', 'ш' => 'sh', 'щ' => 'sch',
+            'ь' => '', 'ы' => 'y', 'ъ' => '',
+            'э' => 'e', 'ю' => 'yu', 'я' => 'ya',
+
+            'А' => 'A', 'Б' => 'B', 'В' => 'V',
+            'Г' => 'G', 'Д' => 'D', 'Е' => 'E',
+            'Ё' => 'E', 'Ж' => 'Zh', 'З' => 'Z',
+            'И' => 'I', 'Й' => 'Y', 'К' => 'K',
+            'Л' => 'L', 'М' => 'M', 'Н' => 'N',
+            'О' => 'O', 'П' => 'P', 'Р' => 'R',
+            'С' => 'S', 'Т' => 'T', 'У' => 'U',
+            'Ф' => 'F', 'Х' => 'H', 'Ц' => 'C',
+            'Ч' => 'Ch', 'Ш' => 'Sh', 'Щ' => 'Sch',
+            'Ь' => '', 'Ы' => 'Y', 'Ъ' => '',
+            'Э' => 'E', 'Ю' => 'Yu', 'Я' => 'Ya',
+        );
+        return strtr($string, $converter);
+    }
+
 }

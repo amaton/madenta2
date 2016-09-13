@@ -1,6 +1,7 @@
 <?php
 /**
- * @Author Arkadii Chyzhov
+ * @package Ara_Migration
+ * @version draft
  */
 namespace Ara\Migration\Console\Command;
 
@@ -53,7 +54,11 @@ class ProductsMigration extends \Symfony\Component\Console\Command\Command
     {
         $this->productFactory = $productFactory;
         $this->productResource = $productResource;
-        $state->setAreaCode('frontend');
+        try {
+            $state->getAreaCode();
+        } catch(\Magento\Framework\Exception\LocalizedException $e) {
+            $state->setAreaCode('frontend');
+        }
         $this->attributeHelper = $attributeHelper;
         parent::__construct();
     }
@@ -85,7 +90,7 @@ class ProductsMigration extends \Symfony\Component\Console\Command\Command
             if (!empty($item['image'])) {
                 $this->downloadRemoteFileWithCurl(
                     $imageSourceUrl . $item['image'],
-                    'pub/media/tmp/catalog/product/' . $item['image']
+                    BP . '/pub/media/tmp/catalog/product/' . $item['image']
                 );
             }
             $product = $this->productFactory->create();
@@ -222,7 +227,7 @@ TAG;
         $file_content = curl_exec($ch);
         curl_close($ch);
 
-        $downloaded_file = fopen($save_to, 'w');
+        $downloaded_file = fopen($save_to, 'w+');
         fwrite($downloaded_file, $file_content);
         fclose($downloaded_file);
 
