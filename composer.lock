@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5150bf82efeca46e440e696c304dea1a",
-    "content-hash": "9549ca3e303a6db8253af89eab2b2868",
+    "hash": "9c240d45b136ede549a50d4e2b590f85",
+    "content-hash": "ba10de80b05c4700e7ec15059fcaadce",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -400,6 +400,47 @@
                 "validator"
             ],
             "time": "2016-05-04 12:27:30"
+        },
+        {
+            "name": "etws/magento-language-ru_ru",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/etws/m2_russianlanguagepack.git",
+                "reference": "3e772333b5761b2a6efcb7fe8d8e71bbca93f999"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/etws/m2_russianlanguagepack/get/3e772333b5761b2a6efcb7fe8d8e71bbca93f999.zip",
+                "reference": "3e772333b5761b2a6efcb7fe8d8e71bbca93f999",
+                "shasum": ""
+            },
+            "require": {
+                "magento/framework": "100.*.*"
+            },
+            "type": "magento2-language",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "EFL1"
+            ],
+            "authors": [
+                {
+                    "name": "ET Web Solutions",
+                    "email": "support@etwebsolutions.com",
+                    "homepage": "http://www.etwebsolutions.com/"
+                }
+            ],
+            "description": "Russian Language Pack for Magento 2",
+            "keywords": [
+                "magento2",
+                "translation"
+            ],
+            "time": "2016-07-02 12:02:12"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -9689,6 +9730,7 @@
     "minimum-stability": "alpha",
     "stability-flags": {
         "composer/composer": 15,
+        "etws/magento-language-ru_ru": 20,
         "phpmd/phpmd": 0
     },
     "prefer-stable": true,
