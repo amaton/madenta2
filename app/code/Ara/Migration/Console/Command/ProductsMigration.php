@@ -5,7 +5,6 @@
  */
 namespace Ara\Migration\Console\Command;
 
-use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -13,8 +12,8 @@ class ProductsMigration extends \Symfony\Component\Console\Command\Command
 {
     const DB_HOST = '127.0.0.1';
     const DB_NAME = 'denta';
-    const DB_USER = 'root';
-    const DB_PASSWORD = '';
+    const DB_USER = 'dentacom';
+    const DB_PASSWORD = 'comdenta';
 
     const DEFAULT_ATTRIBUTE_SET = 4;
     const PRODUCT_DETAILS_ATTRIBUTE_GROUP = 7;
@@ -131,16 +130,12 @@ class ProductsMigration extends \Symfony\Component\Console\Command\Command
 
 
             if (!empty($item['image'])) {
-                try {
                 $product->addImageToMediaGallery(
                     'tmp/catalog/product/' . $item['image'],
                     ['thumbnail', 'small_image', 'image'],
                     false,
                     false
                 );
-                } catch (Exception $e) {
-                    echo $e->getMessage();
-                }
             }
             $product->save();
         }
@@ -202,6 +197,7 @@ where
 -- and
 sp.name_main_variant is null
 and sp.add_group is null
+and spvi.name = ''
 group by
 spv.product_id,
  spv.number,
