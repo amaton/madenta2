@@ -12,8 +12,8 @@ class ProductsMigration extends \Symfony\Component\Console\Command\Command
 {
     const DB_HOST = '127.0.0.1';
     const DB_NAME = 'denta';
-    const DB_USER = 'dentacom';
-    const DB_PASSWORD = 'comdenta';
+    const DB_USER = 'root';
+    const DB_PASSWORD = '';
 
     const DEFAULT_ATTRIBUTE_SET = 4;
     const PRODUCT_DETAILS_ATTRIBUTE_GROUP = 7;
@@ -79,7 +79,6 @@ class ProductsMigration extends \Symfony\Component\Console\Command\Command
     {
         $imageSourceUrl = 'http://denta.com.ua/uploads/shop/products/large/';
         $res = $this->getSqlData($this->getQuerySql());
-        echo $this->getQuerySql();
         $brands = $this->getSqlData($this->getBrandsSql());
         foreach ($brands as $brand) {
             $this->attributeHelper->createOrGetId(self::ATTRIBUTE_MANUFACTURER, $brand['name']);
@@ -87,9 +86,7 @@ class ProductsMigration extends \Symfony\Component\Console\Command\Command
         $this->attributeHelper->addAttributeToAllAttributeSets(
             self::ATTRIBUTE_MANUFACTURER, self::PRODUCT_DETAILS_ATTRIBUTE_GROUP
         );
-        var_dump($res);
         foreach ($res as $item) {
-            echo $res['sku'].PHP_EOL;
             if (!empty($item['image'])) {
                 $this->downloadRemoteFileWithCurl(
                     $imageSourceUrl . $item['image'],
@@ -166,7 +163,6 @@ class ProductsMigration extends \Symfony\Component\Console\Command\Command
     private function getQuerySql()
     {
         return <<<TAG
-SET sql_mode = '';
 select
  spv.product_id as id,
  spv.number as sku,

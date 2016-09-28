@@ -3,9 +3,9 @@
     <type name="Magento\Framework\Console\CommandListInterface">
         <arguments>
             <argument name="commands" xsi:type="array">
-                <!--<item name="CustomersMigration" xsi:type="object">Ara\Migration\Console\Command\CustomersMigration</item>-->
-                <!--<item name="CatalogMigration" xsi:type="object">Ara\Migration\Console\Command\CatalogMigration</item>-->
-                <!--<item name="ProductsMigration" xsi:type="object">Ara\Migration\Console\Command\ProductsMigration</item>-->
+                <item name="CustomersMigration" xsi:type="object">Ara\Migration\Console\Command\CustomersMigration</item>
+                <item name="CatalogMigration" xsi:type="object">Ara\Migration\Console\Command\CatalogMigration</item>
+                <item name="ProductsMigration" xsi:type="object">Ara\Migration\Console\Command\ProductsMigration</item>
                 <item name="AttributesMigration" xsi:type="object">Ara\Migration\Console\Command\AttributesMigration</item>
                 <item name="Attributes2Migration" xsi:type="object">Ara\Migration\Console\Command\Attributes2Migration</item>
                 <item name="ConfigurableProductsMigration" xsi:type="object">Ara\Migration\Console\Command\ConfigurableProductsMigration</item>
