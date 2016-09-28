@@ -5,6 +5,7 @@
  */
 namespace Ara\Migration\Console\Command;
 
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -79,6 +80,7 @@ class ProductsMigration extends \Symfony\Component\Console\Command\Command
     {
         $imageSourceUrl = 'http://denta.com.ua/uploads/shop/products/large/';
         $res = $this->getSqlData($this->getQuerySql());
+        echo $this->getQuerySql();
         $brands = $this->getSqlData($this->getBrandsSql());
         foreach ($brands as $brand) {
             $this->attributeHelper->createOrGetId(self::ATTRIBUTE_MANUFACTURER, $brand['name']);
@@ -86,7 +88,9 @@ class ProductsMigration extends \Symfony\Component\Console\Command\Command
         $this->attributeHelper->addAttributeToAllAttributeSets(
             self::ATTRIBUTE_MANUFACTURER, self::PRODUCT_DETAILS_ATTRIBUTE_GROUP
         );
+        var_dump($res);
         foreach ($res as $item) {
+            echo $res['sku'].PHP_EOL;
             if (!empty($item['image'])) {
                 $this->downloadRemoteFileWithCurl(
                     $imageSourceUrl . $item['image'],
@@ -127,12 +131,16 @@ class ProductsMigration extends \Symfony\Component\Console\Command\Command
 
 
             if (!empty($item['image'])) {
+                try {
                 $product->addImageToMediaGallery(
                     'tmp/catalog/product/' . $item['image'],
                     ['thumbnail', 'small_image', 'image'],
                     false,
                     false
                 );
+                } catch (Exception $e) {
+                    echo $e->getMessage();
+                }
             }
             $product->save();
         }
@@ -163,6 +171,7 @@ class ProductsMigration extends \Symfony\Component\Console\Command\Command
     private function getQuerySql()
     {
         return <<<TAG
+SET sql_mode = '';
 select
  spv.product_id as id,
  spv.number as sku,
@@ -193,8 +202,6 @@ where
 -- and
 sp.name_main_variant is null
 and sp.add_group is null
-and spvi.name = ''
- and sp.id = 1137
 group by
 spv.product_id,
  spv.number,
@@ -215,7 +222,7 @@ TAG;
 
     private function getBrandsSql()
     {
-        return 'select name  from denta.shop_brands_i18n';
+            return 'select name  from denta.shop_brands_i18n';
     }
 
     private function downloadRemoteFileWithCurl($file_url, $save_to)
