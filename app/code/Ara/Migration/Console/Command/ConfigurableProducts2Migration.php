@@ -153,8 +153,13 @@ class ConfigurableProducts2Migration extends \Symfony\Component\Console\Command\
             }
 
             list($attributeCode1, $attributeCode2) = $attributeCodes;
-            $attribute1 = $this->attributeHelper->getAttribute($attributeCode1);
-            $attribute2 = $this->attributeHelper->getAttribute($attributeCode2);
+            try {
+                $attribute1 = $this->attributeHelper->getAttribute($attributeCode1);
+                $attribute2 = $this->attributeHelper->getAttribute($attributeCode2);
+            } catch (\Exception $e) {
+                $output->writeln('Attribute cannot be added to product id ' . $item['id'] . $e->getMessage());
+                continue;
+            }
             $attribute1Values = [];
             $attribute2Values = [];
             $associatedProductIds = [];
@@ -284,7 +289,7 @@ inner join  denta.shop_product_variants_i18n spvi on spv.id = spvi.id
 where
 	spvi.name <> ''
 	and (sp.add_group is not null and sp.add_group <> 'a:0:{}')
-	 and sp.id > 674
+	 -- and sp.id > 674
 group by sp.id, sp.name_main_variant, sp.add_group
 having count(*) > 1
 order by sp.id asc

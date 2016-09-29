@@ -5,7 +5,6 @@
  */
 namespace Ara\Migration\Console\Command;
 
-use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -135,7 +134,7 @@ class ProductsMigration extends \Symfony\Component\Console\Command\Command
                         false,
                         false
                     );
-                } catch (Exception $e) {
+                } catch (\Exception $e) {
                     echo $e->getMessage();
                 }
             }
