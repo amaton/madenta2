@@ -126,7 +126,33 @@ inner join denta.shop_product_variants spv on sp.id = spv.product_id
 inner join  denta.shop_product_variants_i18n spvi on spv.id = spvi.id
 where
 	spvi.name <> ''
-	and (sp.add_group is not null and sp.add_group <> 'a:0:{}')
+	and (sp.add_group is null or sp.add_group = 'a:0:{}')
+group by sp.id, sp.name_main_variant
+having count(*) > 1
+order by spv.number desc
+) t
+group by t.name_main_variant, t.attribute_value
+UNION
+select
+IFNULL(TRIM(t.name_main_variant), 'Цвет') as attribute_name,
+ t.attribute_value, group_concat(t.id) as product_id,
+ if(t.number <> '', group_concat(t.number), CONCAT(group_concat(t.id),'001')) as product_sku
+ -- , group_concat(distinct t.category_id)
+from
+(
+select
+	spv.number,
+	sp.id,
+	sp.name_main_variant,
+	count(*),
+	group_concat(spvi.name order by spvi.id SEPARATOR '|') as attribute_value,
+	group_concat(distinct sp.category_id) as category_id
+from denta.shop_products sp
+inner join denta.shop_product_variants spv on sp.id = spv.product_id
+inner join  denta.shop_product_variants_i18n spvi on spv.id = spvi.id
+where
+	spvi.name <> ''
+and (sp.add_group is not null and sp.add_group <> 'a:0:{}')
 group by sp.id, sp.name_main_variant
 having count(*) > 1
 order by spv.number desc

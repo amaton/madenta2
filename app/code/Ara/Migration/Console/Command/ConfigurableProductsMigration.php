@@ -211,12 +211,18 @@ class ConfigurableProductsMigration extends \Symfony\Component\Console\Command\C
             }
             $product->save();
         }
+
         foreach ($res as $item) {
             $attributeCode = $this->getAttributeCode($item['id']);
             if ($attributeCode == '0') {
                 continue;
             }
-            $attribute = $this->attributeHelper->getAttribute($attributeCode);
+            try {
+                $attribute = $this->attributeHelper->getAttribute($attributeCode);
+            } catch (\Exception $e) {
+                $output->writeln('Attribute cannot be added to product id ' . $item['id'] . $e->getMessage());
+                continue;
+            }
             $attributeValues = [];
             $associatedProductIds = [];
 
