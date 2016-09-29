@@ -189,7 +189,12 @@ class ConfigurableProducts2Migration extends \Symfony\Component\Console\Command\
                         ->setVisibility(\Magento\Catalog\Model\Product\Visibility::VISIBILITY_NOT_VISIBLE)
                         ->setStatus($item['status']);
 
-                    $simpleProduct->save();
+                    try {
+                        $simpleProduct->save();
+                        echo '.';
+                    } catch(Exception $e) {
+                        echo PHP_EOL.$e->getMessage().PHP_EOL;
+                    }
 
                     /** @var \Magento\CatalogInventory\Model\Stock\Item $stockItem */
                     $stockItem = $this->stockItemFactory->create();

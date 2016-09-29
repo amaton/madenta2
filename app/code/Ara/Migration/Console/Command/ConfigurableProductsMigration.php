@@ -5,6 +5,7 @@
  */
 namespace Ara\Migration\Console\Command;
 
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
@@ -209,7 +210,12 @@ class ConfigurableProductsMigration extends \Symfony\Component\Console\Command\C
                     false
                 );
             }
-            $product->save();
+            try {
+                $product->save();
+                echo ':';
+            } catch(Exception $e) {
+                echo PHP_EOL.$e->getMessage().PHP_EOL;
+            }
         }
 
         foreach ($res as $item) {
@@ -243,7 +249,12 @@ class ConfigurableProductsMigration extends \Symfony\Component\Console\Command\C
                     ->setVisibility(\Magento\Catalog\Model\Product\Visibility::VISIBILITY_NOT_VISIBLE)
                     ->setStatus($item['status']);
 
-                $simpleProduct->save();
+                try {
+                    $simpleProduct->save();
+                    echo '.';
+                } catch(Exception $e) {
+                    echo PHP_EOL.$e->getMessage().PHP_EOL;
+                }
 
                 /** @var \Magento\CatalogInventory\Model\Stock\Item $stockItem */
                 $stockItem = $this->stockItemFactory->create();
@@ -285,7 +296,12 @@ class ConfigurableProductsMigration extends \Symfony\Component\Console\Command\C
             $extensionConfigurableAttributes->setConfigurableProductLinks($associatedProductIds);
 
             $product->setExtensionAttributes($extensionConfigurableAttributes);
-            $product->save();
+            try {
+                $product->save();
+                echo ':';
+            } catch(Exception $e) {
+                echo PHP_EOL.$e->getMessage().PHP_EOL;
+            }
         }
         $output->writeln("<info>Configurable Products Migration has been finished</info>");
     }
