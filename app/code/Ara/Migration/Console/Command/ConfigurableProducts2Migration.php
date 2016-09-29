@@ -248,7 +248,11 @@ class ConfigurableProducts2Migration extends \Symfony\Component\Console\Command\
             $extensionConfigurableAttributes->setConfigurableProductLinks($associatedProductIds);
 
             $product->setExtensionAttributes($extensionConfigurableAttributes);
-            $this->productRepository->save($product);
+            try {
+                $this->productRepository->save($product);
+            } catch (\Exception $e) {
+                echo PHP_EOL.$e->getMessage().PHP_EOL;
+            }
         }
         $output->writeln("<info>Configurable Products Migration has been finished</info>");
     }
