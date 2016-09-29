@@ -139,7 +139,12 @@ class ProductsMigration extends \Symfony\Component\Console\Command\Command
                     echo $e->getMessage();
                 }
             }
-            $product->save();
+            try {
+                $product->save();
+                echo '.';
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
         }
         $output->writeln("<info>Products Migration has been finished</info>");
     }
