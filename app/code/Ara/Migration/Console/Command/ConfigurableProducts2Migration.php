@@ -192,7 +192,7 @@ class ConfigurableProducts2Migration extends \Symfony\Component\Console\Command\
                     try {
                         $simpleProduct->save();
                         echo '.';
-                    } catch(Exception $e) {
+                    } catch(\Exception $e) {
                         echo PHP_EOL.$e->getMessage().PHP_EOL;
                     }
 

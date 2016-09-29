@@ -213,7 +213,7 @@ class ConfigurableProductsMigration extends \Symfony\Component\Console\Command\C
             try {
                 $product->save();
                 echo ':';
-            } catch(Exception $e) {
+            } catch(\Exception $e) {
                 echo PHP_EOL.$e->getMessage().PHP_EOL;
             }
         }
@@ -252,7 +252,7 @@ class ConfigurableProductsMigration extends \Symfony\Component\Console\Command\C
                 try {
                     $simpleProduct->save();
                     echo '.';
-                } catch(Exception $e) {
+                } catch(\Exception $e) {
                     echo PHP_EOL.$e->getMessage().PHP_EOL;
                 }
 
@@ -299,7 +299,7 @@ class ConfigurableProductsMigration extends \Symfony\Component\Console\Command\C
             try {
                 $product->save();
                 echo ':';
-            } catch(Exception $e) {
+            } catch(\Exception $e) {
                 echo PHP_EOL.$e->getMessage().PHP_EOL;
             }
         }
