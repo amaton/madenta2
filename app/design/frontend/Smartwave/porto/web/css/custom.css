@@ -40,6 +40,10 @@ body > p {
     .page-header .navigation .level0.parent > a:after{position: absolute; display: none;}
     header.page-header.sticky-header .navigation li.level0 > .level-top{line-height: 16px;}
 
+    .navigation li.level0 {
+        border-right: solid 1px #CC3D43;
+    }
+
     .navigation li.level0 > .submenu {
         left: auto !important;
         width: 200px !important;
