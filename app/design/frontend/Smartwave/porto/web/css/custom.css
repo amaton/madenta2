@@ -28,6 +28,43 @@ body > p {
         width: 1280px;
         max-width: 100%;
     }
+
+    .sw-megamenu.navigation li.level0:first-child,
+    .sw-megamenu.navigation li.level0:last-child{
+        display: none!important;
+    }
+    .sw-megamenu.navigation > ul{display: table;}
+    .sw-megamenu.navigation li.level0.fullwidth{display: table-cell; vertical-align: middle;}
+    .navigation .level0 > .level-top{line-height: 16px; padding: 12px;}
+    .page-header.type2 .navigation .level0.parent > a:after{line-height: 16px;}
+    .page-header .navigation .level0.parent > a:after{position: absolute; display: none;}
+    header.page-header.sticky-header .navigation li.level0 > .level-top{line-height: 16px;}
+
+    .navigation li.level0 > .submenu {
+        left: auto !important;
+        width: 200px !important;
+        background: #EE3D43;
+    }
+    .navigation .subchildmenu.mega-columns.columns4 > li {
+        width: 100% !important;
+        border-bottom: solid 1px #CC3D43;
+    }
+    .navigation .subchildmenu.mega-columns.columns4 > li span {
+        display: block;
+        padding-bottom: 5px;
+        color: #fff;
+        line-height: 1.3;
+    }
+    .navigation .subchildmenu.mega-columns.columns4 > li:hover {
+        background: #CC3D43;
+    }
+    .navigation .subchildmenu.mega-columns.columns4 > li:hover a {
+
+    }
+    .navigation .subchildmenu.mega-columns.columns4 > li a:hover span {
+        text-decoration: none !important;
+        cursor: pointer;
+    }
 }
 .btn-default {
     color: #fff;
