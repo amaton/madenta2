@@ -7,6 +7,11 @@ body > p {
 .toolbar .modes > a {
     text-decoration: none;
 }
+
+.filter-id-Kategoriya .filter-options-content .item a {
+    font-size: 16px !important;
+}
+
 @media (min-width: 1200px) {
     .col-lg-2-4 {
         width: 20%;
