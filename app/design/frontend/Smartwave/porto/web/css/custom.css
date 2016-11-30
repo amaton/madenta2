@@ -40,8 +40,8 @@ body > p {
     }
     .sw-megamenu.navigation > ul{display: table;}
     .sw-megamenu.navigation li.level0.fullwidth{display: table-cell; vertical-align: middle;}
-    .navigation .level0 > .level-top{line-height: 16px; padding: 12px;}
-    .page-header.type2 .navigation .level0.parent > a:after{line-height: 16px;}
+    .navigation .level0 > .level-top{line-height: 16px !important; padding: 12px !important;}
+    .page-header.type2 .navigation .level0.parent > a:after{line-height: 16px !important;}
     .page-header .navigation .level0.parent > a:after{position: absolute; display: none;}
     header.page-header.sticky-header .navigation li.level0 > .level-top{line-height: 16px;}
 
