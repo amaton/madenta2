@@ -185,6 +185,7 @@ $flex_grid = "";
                                 <?php echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
                             </a>
                         </strong>
+                        Бренд: <?php echo $_product->getManufacturer(); ?>
                         <?php if($_category_config['rating_star']): ?>
                         <?php
                             $review_html = $block->getReviewsSummaryHtml($_product, $templateType);
