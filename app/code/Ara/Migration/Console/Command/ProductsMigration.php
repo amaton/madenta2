@@ -202,7 +202,7 @@ where
 -- and
 sp.name_main_variant is null
 and sp.add_group is null
-and spvi.name = ''
+-- and spvi.name = ''
 group by
 spv.product_id,
  spv.number,

@@ -107,6 +107,17 @@ class CustomAttribute extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
+     * Save attribute by code.
+     *
+     * @param string $attributeCode
+     * @return bool
+     */
+    public function saveAttribute($attributeCode)
+    {
+        return $this->attributeRepository->save($attributeCode);
+    }
+
+    /**
      * @param string|integer $entityTypeId
      * @param string $code
      * @param array $attr
