@@ -12,6 +12,41 @@ body > p {
     font-size: 16px !important;
 }
 
+/* benefits */
+.frame-benefits{padding: 18px 0 0; position: relative;}
+.frame-benefits-product{margin-bottom: 30px;padding-bottom: 5px;overflow: hidden;}
+.items-benefits > li{position: relative;width: 25%;padding-top: 5px; display: inline-block;}
+.items-benefits > li:before{content: "";width: 2px;height: 67px;position: absolute;top: 0;left: -27px;}
+.vertical-layout .items-benefits > li:before{left: -7px;}
+.items-benefits > li:first-child:before{display: none;}
+.frame-icon-benefit > [class*="icon-"]{position: relative;z-index: 1;}
+.frame-description-benefit p{margin-bottom: 0;}
+.frame-description-benefit .title{text-transform: uppercase;}
+
+.frame-benefits-product .frame-benefits{margin-bottom: 0;}
+.frame-benefits-product .frame-benefits:after{content: "";position: absolute;width: 110%;left: -5%;top: 100%;height: 5px;margin-top: -5px;-moz-box-shadow: 0 2px 4px #ece9e6;-webkit-box-shadow: 0 2px 4px #ece9e6;box-shadow: 0 2px 4px #ece9e6;}
+
+.frame-benefits {
+    background: url(/pub/media/porto/page_bg/default/h_f.png) repeat-x;
+    background-position: 0 -254px;
+    height: 97px;
+    border-bottom: 1px solid #fcfcfc;
+    padding: 18px 0 0;
+    position: relative;
+}
+
+.items-benefits > li:before{background-position: 0 -10px;}
+.frame-description-benefit p{color: #999;}
+.frame-icon-benefit{text-align: center;width: 67px;height: 66px;position: relative; background: none; text-indent: -10px;}
+.frame-icon-benefit > [class*="icon-"]{background: url("/pub/media/porto/page_bg/default/benefits.png") no-repeat;}
+.frame-icon-benefit > .icon-benefits_1{width: 67px;height: 66px;background-position: 0 0;}
+.frame-icon-benefit > .icon-benefits_2{width: 67px;height: 66px;background-position: -67px 0;}
+.frame-icon-benefit > .icon-benefits_3{width: 67px;height: 66px;background-position: -134px 0;}
+.frame-icon-benefit > .icon-benefits_4{width: 67px;height: 66px;background-position: -201px 0;}
+.frame-description-benefit{margin-left: 70px;height: 58px;padding-right: 10px;}
+/* benefits */
+
+
 @media (min-width: 1200px) {
     .col-lg-2-4 {
         width: 20%;
@@ -40,8 +75,8 @@ body > p {
     }
     .sw-megamenu.navigation > ul{display: table;}
     .sw-megamenu.navigation li.level0.fullwidth{display: table-cell; vertical-align: middle;}
-    .navigation .level0 > .level-top{line-height: 16px; padding: 12px;}
-    .page-header.type2 .navigation .level0.parent > a:after{line-height: 16px;}
+    .navigation .level0 > .level-top{line-height: 16px !important; padding: 12px !important;}
+    .page-header.type2 .navigation .level0.parent > a:after{line-height: 16px !important;}
     .page-header .navigation .level0.parent > a:after{position: absolute; display: none;}
     header.page-header.sticky-header .navigation li.level0 > .level-top{line-height: 16px;}
 
