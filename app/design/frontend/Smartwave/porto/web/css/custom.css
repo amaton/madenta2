@@ -28,7 +28,6 @@ body > p {
     font-size: 0;
 }
 .frame-benefits{padding: 0 !important; margin: 0 !important; position: relative;}
-.frame-benefits .container {margin: 0;padding: 0;}
 .frame-benefits-product{margin: 0;padding: 0;overflow: hidden;}
 .items-benefits > li{position: relative;width: 25%;padding-top: 0; display: inline-block;}
 .items-benefits > li:before{content: "";width: 2px;height: 67px;position: absolute;top: 0;left: -27px;}
