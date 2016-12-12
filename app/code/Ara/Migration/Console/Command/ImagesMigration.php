@@ -83,7 +83,11 @@ class ImagesMigration extends \Symfony\Component\Console\Command\Command
                     $output->writeln("<info>save image {$image} for product {$item['id']}</info>");
                 }
             }
-            $product->save();
+	    try {
+                $product->save();
+            } catch(\Exception $e) {
+                echo PHP_EOL.$e->getMessage().PHP_EOL;
+            }
         }
         $output->writeln("<info>Images Migration has been finished</info>");
     }

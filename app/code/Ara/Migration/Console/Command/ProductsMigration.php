@@ -201,8 +201,8 @@ where
 -- spv.mainImage is not null
 -- and
 sp.name_main_variant is null
-and sp.add_group is null
-and spvi.name = ''
+-- and sp.add_group is null
+-- and spvi.name = ''
 group by
 spv.product_id,
  spv.number,

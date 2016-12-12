@@ -73,14 +73,101 @@ class AttributesMigration extends \Symfony\Component\Console\Command\Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+
+        $output->writeln("<info>First attribute migration started</info>");
+        try {
+            $this->applyFirstAttribute();
+        } catch(\Exception $e) {
+            echo $e->getTraceAsString();
+        }
+        $output->writeln("<info>Second attribute migration started</info>");
+        try {
+            $this->applySecondAttribute();
+        } catch(\Exception $e) {
+            echo $e->getTraceAsString();
+        }
         $this->cacheManager->clean($this->cacheManager->getAvailableTypes());
         $this->processor->reindexAll();
 
-        $this->applyAttributes();
-
-        $this->cacheManager->clean($this->cacheManager->getAvailableTypes());
-        $this->processor->reindexAll();
         $output->writeln("<info>Attributes Migration has been finished</info>");
+    }
+
+    /**
+     * @return void
+     */
+    protected function applyFirstAttribute()
+    {
+        $attrRes = $this->getSqlData($this->getOneAttributeQuerySql());
+        foreach ($attrRes as $item) {
+
+            $attribute = $this->getFirstAttribute($item);
+            if (empty($attribute)) {
+                continue;
+            }
+            $this->deleteAttribute($attribute['code']);
+            $this->addAttribute($attribute);
+        }
+    }
+
+    /**
+     * @return void
+     */
+    protected function applySecondAttribute()
+    {
+        $attrRes = $this->getSqlData($this->getSecondAttributeQuerySql());
+        foreach ($attrRes as $item) {
+
+            $attribute = $this->getSecondAttribute($item);
+            if (empty($attribute)) {
+                continue;
+            }
+            $this->deleteAttribute($attribute['code']);
+
+            $this->addAttribute($attribute);
+        }
+    }
+
+    /**
+     * @param $attrName
+     * @param $productId
+     * @return string
+     */
+    protected function getFirstAttribute($item)
+    {
+        $attribute = [];
+
+        $attrName = $item['attribute_name'];
+        $productId = explode(',', $item['product_id'])[0];
+
+        $attrString = strtr($this->attributeHelper->translit($attrName), '/', '_');
+        $attribute['code'] = implode('_', explode(' ', $attrString)) . '_' . $productId;
+        $attribute['name'] = $item['attribute_name'];
+        $attribute['options'] = explode('|', $item['attribute_value']);
+
+        return $attribute;
+    }
+
+    /**
+     * @param $attrName
+     * @param $productId
+     * @return string
+     */
+    protected function getSecondAttribute($item)
+    {
+        $attribute = [];
+        $productId = explode(',', $item['product_id'])[0];
+        if (isset($item['second_attribute'])) {
+            $secondAttribute = unserialize($item['second_attribute']);
+            if ($secondAttribute) {
+                $row = array_shift($secondAttribute);
+                $attrString = strtr($this->attributeHelper->translit($row['name']), '/', '_');
+                $attrName =  implode('_', explode(' ', $attrString)) . '_2_' . $productId;
+                $attribute['code'] = $attrName;
+                $attribute['name'] = $row['name'];
+                $attribute['options'] = explode(PHP_EOL, $row['value']);
+            }
+        }
+        return $attribute;
     }
 
     /**
@@ -162,68 +249,86 @@ TAG;
     }
 
     /**
-     * @return void
+     * @return string
      */
-    protected function applyAttributes()
+    private function getSecondAttributeQuerySql()
     {
-        $attrRes = $this->getSqlData($this->getOneAttributeQuerySql());
-        foreach ($attrRes as $item) {
-
-            $attrName = $item['attribute_name'];
-            $optValues = explode('|', $item['attribute_value']);
-            $productId = explode(',', $item['product_id'])[0];
-            try {
-                $attrString = strtr($this->attributeHelper->translit($attrName), '/', '_');
-                $attrName =  implode('_', explode(' ', $attrString)) . '_' . $productId;
-                $attr = $this->attributeHelper->getAttribute($attrName);
-                $this->attributeHelper->deleteAttribute($attr);
-            } catch (\Magento\Framework\Exception\NoSuchEntityException $e) {
-
-            }
-            $this->attributeHelper->addAttribute(
-                \Magento\Catalog\Model\Product::ENTITY,
-                $attrName,
-                [
-                    'type' => 'varchar',
-                    'backend' => '',
-                    'frontend' => '',
-                    'label' => $item['attribute_name'],
-                    'input' => 'select',
-                    'class' => '',
-                    'source' => '',
-                    'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
-                    'visible' => true,
-                    'required' => false,
-                    'user_defined' => true,
-                    'default' => '',
-                    'searchable' => false,
-                    'filterable' => false,
-                    'comparable' => false,
-                    'visible_on_front' => false,
-                    'used_in_product_listing' => false,
-                    'unique' => false,
-                    'group' => 'Product Details',
-                    'option' => ['values' => $optValues],
-                    'apply_to' => 'simple, virtual'
-                ]
-            );
-        }
+        return <<<TAG
+select
+IFNULL(TRIM(t.name_main_variant), 'Цвет') as attribute_name,
+ t.attribute_value,
+ t.add_group as second_attribute,
+ group_concat(t.id) as product_id,
+ if(t.number <> '', group_concat(t.number), CONCAT(group_concat(t.id),'001')) as product_sku
+ -- , group_concat(distinct t.category_id)
+from
+(
+select
+	spv.number,
+	sp.id,
+	sp.name_main_variant,
+	sp.add_group,
+	count(*),
+	group_concat(spvi.name order by spvi.id SEPARATOR '|') as attribute_value,
+	 group_concat(distinct sp.category_id) as category_id
+from denta.shop_products sp
+inner join denta.shop_product_variants spv on sp.id = spv.product_id
+inner join  denta.shop_product_variants_i18n spvi on spv.id = spvi.id
+where
+	spvi.name <> ''
+	and (sp.add_group is not null and sp.add_group <> 'a:0:{}')
+group by sp.id, sp.name_main_variant, sp.add_group
+having count(*) > 1
+order by spv.number desc
+) t
+group by t.name_main_variant, t.attribute_value, t.add_group
+TAG;
     }
 
-    protected function getAttributeCode($productId)
+    /**
+     * @param $attribute
+     */
+    private function addAttribute($attribute)
     {
-        if ($this->attributes === null) {
-            $attributesRes = $this->getSqlData($this->getOneAttributeQuerySql());
-            foreach ($attributesRes as $row) {
-                $ids = explode(',', $row['product_id']);
-                foreach($ids as $id) {
-                    $attrString = strtr($this->attributeHelper->translit($row['attribute_name']), '/', '_');
-                    $attrName =  implode('_', explode(' ', $attrString)) . '_' . $ids[0];
-                    $this->attributes[$id] = $attrName;
-                }
-            }
-        }
-        return isset($this->attributes[$productId]) ? $this->attributes[$productId] : 0;
+        $this->attributeHelper->addAttribute(
+            \Magento\Catalog\Model\Product::ENTITY,
+            $attribute['code'],
+            [
+                'type' => 'varchar',
+                'backend' => '',
+                'frontend' => '',
+                'label' => $attribute['name'],
+                'input' => 'select',
+                'class' => '',
+                'source' => '',
+                'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
+                'visible' => true,
+                'required' => false,
+                'user_defined' => true,
+                'default' => '',
+                'searchable' => false,
+                'filterable' => false,
+                'comparable' => false,
+                'visible_on_front' => false,
+                'used_in_product_listing' => false,
+                'unique' => false,
+                'group' => 'Product Details',
+                'option' => ['values' => $attribute['options']],
+                'apply_to' => 'simple, virtual'
+            ]
+        );
     }
 
+    /**
+     * @param sring $attribute
+     */
+    protected function deleteAttribute($attributeCode)
+    {
+        try {
+            $attr = $this->attributeHelper->getAttribute($attributeCode);
+            $this->attributeHelper->deleteAttribute($attr);
+        } catch (\Magento\Framework\Exception\NoSuchEntityException $e) {
+
+        }
+    }
 }

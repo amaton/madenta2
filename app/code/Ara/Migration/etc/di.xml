@@ -4,12 +4,11 @@
         <arguments>
             <argument name="commands" xsi:type="array">
                 <item name="CustomersMigration" xsi:type="object">Ara\Migration\Console\Command\CustomersMigration</item>
+                <item name="ManufacturerMigration" xsi:type="object">Ara\Migration\Console\Command\ManufacturerMigration</item>
                 <item name="CatalogMigration" xsi:type="object">Ara\Migration\Console\Command\CatalogMigration</item>
                 <item name="ProductsMigration" xsi:type="object">Ara\Migration\Console\Command\ProductsMigration</item>
                 <item name="AttributesMigration" xsi:type="object">Ara\Migration\Console\Command\AttributesMigration</item>
-                <item name="Attributes2Migration" xsi:type="object">Ara\Migration\Console\Command\Attributes2Migration</item>
                 <item name="ConfigurableProductsMigration" xsi:type="object">Ara\Migration\Console\Command\ConfigurableProductsMigration</item>
-                <item name="ConfigurableProducts2Migration" xsi:type="object">Ara\Migration\Console\Command\ConfigurableProducts2Migration</item>
                 <item name="ImagesMigration" xsi:type="object">Ara\Migration\Console\Command\ImagesMigration</item>
                 <item name="UpdatePriceMigration" xsi:type="object">Ara\Migration\Console\Command\UpdatePriceMigration</item>
             </argument>
