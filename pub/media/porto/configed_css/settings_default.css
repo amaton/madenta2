@@ -1,3 +1,92 @@
 /**
  * WARNING: Do not change this file. Your changes will be lost.
- * 2015-12-16 13:43:16 */
+ * 2016-12-12 12:41:21 */
+body.boxed {
+}
+@media (min-width: 768px) {
+    .page-layout-1column .product-info-main, .page-layout-2columns-left .product-info-main, .page-layout-2columns-right .product-info-main, .page-layout-3columns .product-info-main {
+        width: 49%;
+    }
+    .page-layout-1column .product.media, .page-layout-2columns-left .product.media, .page-layout-2columns-right .product.media, .page-layout-3columns .product.media {
+        width: 49%;
+    }
+}
+
+header.page-header.type2 {
+    background-color: #fff;
+    color: #777;
+}
+
+.sw-megamenu.navigation > ul {
+    padding-right: 21px;
+    text-align: center;
+}
+.navigation .level0 > .level-top {
+line-height: 33px;
+}
+
+#switcher-currency {
+    display:none;
+}
+
+#maincontent  {
+  max-width: 100%;
+  width: 100%;
+  padding: 0;
+  overflow-x: auto;
+}
+
+.product-item-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.page-header .navigation .level0 > .level-top {
+    text-transform: none;
+}
+
+.sw-megamenu.navigation li.level0.fullwidth .submenu li.level1 > a, .sw-megamenu.navigation li.level0.staticwidth .submenu li.level1 > a {
+        text-transform: none;
+}
+
+.greet.welcome {
+    color:#555;
+}
+
+.page-layout-1column .block.widget .products-grid .product-item {
+    width:100%;
+}
+
+.page-header.type2 .custom-block {
+    top: 25%;
+}
+
+header.page-header.sticky-header .minicart-wrapper {
+    right: -21px;
+}
+
+.c_green {
+  color: #20a783;
+}
+.c_red {
+  color: #db4b4b;
+}
+
+.icon-alert {
+    background-position: -420px -160px;
+    width: 14px;
+    height: 14px;
+    margin-right: 6px;
+    top: 3px;
+    background: url(images/sprite.png) no-repeat;
+}
+
+@media only screen and (max-width: 767px) {
+    .page-header.type2 .nav-toggle:before, .page-header.type2 .block-search .label:before, .page-header.type2 .minicart-wrapper .action.showcart:before, .page-header.type2 .minicart-wrapper .action.showcart.active:before {
+        color: #393F4F;
+    }
+    .page-header.type2 .minicart-wrapper .action.showcart .counter.qty {
+        color: #fff;
+    }
+} 
