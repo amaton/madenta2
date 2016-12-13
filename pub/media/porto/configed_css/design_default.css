@@ -1,6 +1,6 @@
 /**
  * WARNING: Do not change this file. Your changes will be lost.
- * 2016-12-13 09:51:42 */
+ * 2016-12-13 13:57:21 */
 
 .theme-color{color:#DD3737 !important;}
 .theme-hover-color:hover{color:#DD3737 !important;}
@@ -51,6 +51,14 @@ a,a:hover, .page-header a, .page-header a:hover, .page-header .panel.header .hea
         border-top-color:#DD3737;
     }
 }
+button.action.primary{
+}
+button.action.primary:hover{
+}
+.page-wrapper > .breadcrumbs{background-color:#F5F5F5}
+.page-wrapper > .breadcrumbs{color:#555555}
+.page-wrapper > .breadcrumbs a, .page-wrapper > .breadcrumbs a:focus{color:#555555}
+.page-wrapper > .breadcrumbs a:hover{color:#2BA990}
 @media (min-width: 768px){
     .page-header.type1, .page-header.type2, .page-header.type3, .page-header.type4, .page-header.type5, .page-header.type6, .page-header.type7, .page-header.type8 .header.content, .page-header.type9, .page-header.type10, .page-header.type11 {
         background-color: #FFFFFF;
