@@ -1,0 +1,9 @@
+There is no no-color option ("less --help" for help)
+// /**
+//  * Copyright © 2016 Magento. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+.admin__field[data-index^="sw_menu"] button.action-wysiwyg, .admin__field[data-index^="sw_ocat"] button.action-wysiwyg {
+    display: none;
+}

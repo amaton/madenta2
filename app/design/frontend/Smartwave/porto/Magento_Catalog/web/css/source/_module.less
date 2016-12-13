@@ -327,12 +327,15 @@
         }
     }
     .product-reviews-summary {
-        float: left;
         margin-bottom: 20px;
     }
     .box-tocart {
         margin-top: 0;
         margin-bottom: 30px;
+        
+        .actions {
+            margin-right: 20px;
+        }
     }
     .product-options-bottom {
         .box-tocart {
@@ -458,7 +461,12 @@
     border-top: 1px solid #ebebeb;
 }
 
-.product-addto-links, .product-social-links {
+.moved-add-to-links {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.product-addto-links, .moved-add-to-links, .product-social-links {
     .action span {
         display: none;
     }
@@ -765,7 +773,6 @@
                 .price {
                     font-size: 36px;
                     line-height: 36px;
-                    text-align: center;
                 }
             }
             .price-including-tax + .price-excluding-tax {
@@ -1381,10 +1388,3 @@ body.catalog-product-compare-index {
         }
     }
 }
-.frame-delivery-payment{margin-bottom: 8px;}
-.frame-delivery-payment dt{padding: 0 0 0;}
-.frame-delivery-payment dd{padding: 5px 0 20px;}
-.list-style-1 li{position: relative;padding-left: 22px; color:#666; margin-bottom: 4px}
-.list-style-1 li .help {color:#999; display: block;}
-.list-style-1 li:before{content: "";position: absolute;left: 4px;top: 3px;background-position: -640px -140px; width: 14px; height:13px;}
-[class*="icon-"], [class*="icon_"], .title-category-l1.is-sub:after, .title-category-l1.is-sub .ie, .ui-slider-handle, .fancy-ico, #fancybox-close, .product-status, .niceCheck, .niceRadio, .pager > a, .pager > a.activeSlide, footer ul li:before, .list-style-1 li:before, .frame-list-comment__icsi-css > .sub-1 > li > .frame-comment__icsi-css:before, .comment__icsi-css .frame-list-comment__icsi-css.sub-2 > li > .frame-comment__icsi-css:before, .text ul li:before, .menu-row-category .title-category-l1:before{background: url("images/sprite.png") no-repeat;}

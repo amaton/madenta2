@@ -11,6 +11,10 @@
 
 <?php
 $columns = "columns4";
+$_imagehelper = $this->helper('Magento\Catalog\Helper\Image');
+$_portohelper = $this->helper('Smartwave\Porto\Helper\Data');
+$review_model = $_portohelper->getModel('\Magento\Review\Model\Review');
+$_category_config = $_portohelper->getConfig('porto_settings/category');
 switch ($type = $block->getType()) {
 
     case 'related-rule':
@@ -79,13 +83,14 @@ switch ($type = $block->getType()) {
         if ($exist = count($block->getItemCollection()->getItems())) {
             $type = 'upsell';
             $class = $type;
-
+            $upsell_columns = $_portohelper->getConfig('porto_settings/product/upsell_columns');
+            if($upsell_columns)
+                $columns = "columns".$upsell_columns;
             $image = 'upsell_products_list';
             $title = __('We found other products you might like!');
             $items = $block->getItemCollection()->getItems();
             $limit = $block->getItemLimit('upsell');
             $shuffle = 0;
-            $columns = "columns4";
             
             $showWishlist = false;
             $showCompare = false;
@@ -160,16 +165,11 @@ switch ($type = $block->getType()) {
     break;
 }
 
-$_imagehelper = $this->helper('Magento\Catalog\Helper\Image');
-$_portohelper = $this->helper('Smartwave\Porto\Helper\Data');
-$review_model = $_portohelper->getModel('\Magento\Review\Model\Review');
-$_category_config = $_portohelper->getConfig('porto_settings/category');
 $image = 'category_page_grid';
 $hover_image = 'category_page_grid-hover';
 $image_width = ($_category_config['ratio_width'])?$_category_config['ratio_width']:300;
 $image_height = ($_category_config['ratio_height'])?$_category_config['ratio_height']:300;
 ?>
-
 <?php if ($exist):?>
 
     <?php if ($type == 'related' || $type == 'upsell'): ?>
@@ -181,6 +181,7 @@ $image_height = ($_category_config['ratio_height'])?$_category_config['ratio_hei
     <?php else: ?>
         <div class="block <?php /* @escapeNotVerified */ echo $class; ?>">
     <?php endif; ?>
+    <div class="clearer"></div>
     <div class="block-title title">
         <strong id="block-<?php /* @escapeNotVerified */ echo $class?>-heading" role="heading" aria-level="2"><?php /* @escapeNotVerified */ echo $title; ?></strong>
     </div>

@@ -40,7 +40,8 @@ define([
             }
 
             setTimeout(function () {
-                $('.product.data.items').tabs('option', 'openOnFocus', true);
+				if(!$('.product.info.detailed').hasClass("sticky"))
+	                $('.product.data.items').tabs('option', 'openOnFocus', true);
             }, 500);
         },
         // Switch to Mobile Version
@@ -74,7 +75,8 @@ define([
             }, 2000);
 
             setTimeout(function () {
-                $('.product.data.items').tabs('option', 'openOnFocus', false);
+				if(!$('.product.info.detailed').hasClass("sticky"))
+					$('.product.data.items').tabs('option', 'openOnFocus', false);
             }, 500);
         }
     });

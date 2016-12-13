@@ -246,18 +246,18 @@
         a {
             color: @product-reviews-summary-links;
             padding: 0 10px 0 15px;
-            
-            span {
-                display: inline-block;
-            }
-            &:hover span {
-                text-decoration: underline;
-            }
         }
         a:not(:last-child) {
             border-left: 1px solid #ccc;
         }
         .action.view span {
+        }
+    }
+    &.no-rating {
+        .reviews-actions {
+            a:first-child {
+                padding-right: 0;
+            }
         }
     }
 }

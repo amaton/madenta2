@@ -6,6 +6,7 @@
 .swatch-attribute-options {
     display: inline-block;
     vertical-align: middle;
+    margin: 0 -3px;
 }
 
 .product-info-main .swatch-attribute-options {
@@ -42,9 +43,9 @@
 .swatch-option {
     /*width: 30px;*/
     padding: 1px 2px;
-    min-width: 30px;
+    min-width: 27.7px;
     max-width: 90px;
-    height: 30px;
+    height: 27px;
     float: left;
     margin: 0 10px 5px 0;
     text-align: center;
@@ -67,7 +68,8 @@
 }
 
 .swatch-option-link-layered .swatch-option {
-    margin-right: 7px;
+    margin-right: 3px;
+    margin-left: 3px;
 }
 
 .swatch-option.text {
@@ -76,10 +78,8 @@
     font-size: 12px;
     font-weight: 400;
     line-height: 20px;
-    padding: 4px 8px;
-    min-width: 30px;
-    margin-right: 7px;
-    /*background-color: #F2F2F2;*/
+    padding: 4px;
+    min-width: 27.7px;
 }
 .product-items .swatch-option.text {
     line-height: 15px;

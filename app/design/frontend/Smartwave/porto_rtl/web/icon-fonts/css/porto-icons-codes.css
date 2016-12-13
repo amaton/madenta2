@@ -1,4 +1,5 @@
 
+.porto-icon-spinner:before { content: '\f110'; } /* '' */
 .porto-icon-up-open:before { content: '\f800'; } /* '' */
 .porto-icon-left-open:before { content: '\f801'; } /* '' */
 .porto-icon-right-open:before { content: '\f802'; } /* '' */
@@ -54,6 +55,7 @@
 .porto-icon-th-list:before { content: '\f83a'; } /* '' */
 .porto-icon-chart-bar:before { content: '\f83b'; } /* '' */
 .porto-icon-heart-empty:before { content: '\f83c'; } /* '' */
+.porto-icon-instagram:before { content: '\f83d'; } /* '' */
 .porto-icon-up:before { content: '\f840'; } /* '' */
 .porto-icon-left:before { content: '\f841'; } /* '' */
 .porto-icon-down:before { content: '\f842'; } /* '' */
@@ -74,8 +76,8 @@
 .porto-icon-info:before { content: '\f852'; } /* '' */
 .porto-icon-help-circled-alt:before { content: '\f853'; } /* '' */
 .porto-icon-info-circled-alt:before { content: '\f854'; } /* '' */
-.porto-icon-chevron-right:before { content: '\f855'; } /* '' */
-.porto-icon-chevron-left:before { content: '\f856'; } /* '' */
+.porto-icon-chevron-left:before { content: '\f855'; } /* '' */
+.porto-icon-chevron-right:before { content: '\f856'; } /* '' */
 .porto-icon-reply:before { content: '\f857'; } /* '' */
 .porto-icon-paper-plane:before { content: '\f858'; } /* '' */
 .porto-icon-magnify:before { content: '\f859'; } /* '' */
@@ -87,3 +89,21 @@
 .porto-icon-tag:before { content: '\f863'; } /* '' */
 .porto-icon-tags:before { content: '\f864'; } /* '' */
 .porto-icon-calendar:before { content: '\f865'; } /* '' */
+.porto-icon-circle-empty:before { content: '\f870'; } /* '' */
+.porto-icon-shirt:before { content: '\f871'; } /* '' */
+.porto-icon-computer:before { content: '\f872'; } /* '' */
+.porto-icon-toys:before { content: '\f873'; } /* '' */
+.porto-icon-garden:before { content: '\f874'; } /* '' */
+.porto-icon-couch:before { content: '\f875'; } /* '' */
+.porto-icon-sports:before { content: '\f876'; } /* '' */
+.porto-icon-gift:before { content: '\f877'; } /* '' */
+.porto-icon-eye:before { content: '\f878'; } /* '' */
+.porto-icon-export:before { content: '\f879'; } /* '' */
+.porto-icon-bag:before { content: '\f87a'; } /* '' */
+.porto-icon-search-1:before { content: '\f87b'; } /* '' */
+.porto-icon-check:before { content: '\f87c'; } /* '' */
+.porto-icon-check-empty:before { content: '\f87d'; } /* '' */
+.porto-icon-search-2:before { content: '\f880'; } /* '' */
+.porto-icon-bag-1:before { content: '\f881'; } /* '' */
+.porto-icon-plus:before { content: '\f882'; } /* '' */
+.porto-icon-minus:before { content: '\f883'; } /* '' */

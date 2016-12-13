@@ -186,6 +186,12 @@
 .product-item-photo {
     padding: 0;
 }
+.checkout-index-index .page-main {
+    background: transparent;
+}
+.checkout-index-index .page-main .columns {
+    background-color: #fff;
+}
 @media (min-width: 768px) {
     header.page-header.type1.sticky-header .nav-sections {
         background-color: #08c;

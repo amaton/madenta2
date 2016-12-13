@@ -371,51 +371,36 @@
          <title>Porto - Homepage Slider 3</title>
          <identifier>porto_homeslider_3</identifier>
          <content><![CDATA[<div class="full-screen-slider">
-    <div id="banner-slider-demo-3" class="owl-carousel owl-middle-narrow owl-banner-carousel">
+    <div id="banner-slider-demo-3" class="owl-carousel owl-bottomright-narrow owl-banner-carousel">
         <div class="item" style="background:#f0f0f0;background-image:linear-gradient(#e8e8e8,#f0f0f0);position:relative;">
-            <div style="width:100%;height:100%;width:100vw;height:100vh;background:url({{media url="wysiwyg/smartwave/porto/homepage/03/slider/slide1.jpg"}}) 80% center no-repeat; background-size:cover;"></div>
-            <div class="slide1-content" style="width:100%;height:100%;position:absolute;left:0;top:0;">
-                <div class="container" style="height:100%;position:relative;">
-                    <div class="content-area" style="position:absolute;top:37%;left:7%;text-align:center;">
-                        <div style="margin:0;line-height:1;">
-                            <img src="{{media url="wysiwyg/smartwave/porto/homepage/03/slider/quote.png"}}" alt="" class="quote" style="display:inline-block;vertical-align:middle;"/>
-                            <em style="display:inline-block;vertical-align:middle;line-height:1;color:#fff;font-weight:300;font-style:normal;">DO YOU NEED A NEW</em>
-                            <img src="{{media url="wysiwyg/smartwave/porto/homepage/03/slider/quote.png"}}" alt="" class="quote" style="display:inline-block;vertical-align:middle;"/>
-                        </div>
-                        <h2 style="font-weight:800;color:#fff;line-height:1;">eCOMMERCE?</h2>
-                        <p style="font-weight:300;color:#fff;line-height:1;">Check our options and features.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="item" style="background:#f0f0f0;background-image:linear-gradient(#e8e8e8,#f0f0f0);position:relative;">
-            <div style="width:100%;height:100%;width:100vw;height:100vh;background:url({{media url="wysiwyg/smartwave/porto/homepage/03/slider/slide2.jpg"}}) 20% center no-repeat; background-size:cover;"></div>
-            <div class="slide2-content" style="width:100%;height:100%;position:absolute;left:0;top:0;">
-                <div class="container" style="height:100%;position:relative;">
-                    <div class="content-area" style="position:absolute;top:40%;right:20%;text-align:left;">
-                        <em style="display:block;line-height:1;color:#fff;font-weight:300;font-style:normal;">up to <b>70%</b> off!</em>
-                        <h2 style="font-weight:600;color:#fff;line-height:1;">HUGE <b style="font-weight:800;">SALE</b></h2>
-                        <p style="font-weight:600;color:#fff;line-height:1;">Fashion<span class="split">-</span>Electronics<span class="split">-</span>Gifts<span class="split">-</span>Music<span class="split">-</span>Sports</p>
-                        <div style="text-align:right;"><a href="#" class="btn btn-default" style="border:0;background-color:#fefefe;color:#777;font-weight:600;">SHOP NOW</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="item" style="background:#f0f0f0;background-image:linear-gradient(#e8e8e8,#f0f0f0);position:relative;">
-            <div style="width:100%;height:100%;width:100vw;height:100vh;background:url({{media url="wysiwyg/smartwave/porto/homepage/03/slider/slide3.jpg"}}) center center no-repeat; background-size:cover;"></div>
+            <div style="width:100%;height:100%;width:100vw;height:100vh;background:url({{media url="wysiwyg/smartwave/porto/homepage/03/slider/slide3.jpg"}}) 70% top no-repeat; background-size:cover;"></div>
             <div class="slide3-content" style="width:100%;height:100%;position:absolute;left:0;top:0;">
-                <div class="container" style="height:100%;position:relative;">
-                    <div class="content-area" style="position:absolute;left:0;top:40%;text-align:center;width:100%;">
-                        <div style="display:inline-block;">
-                            <em style="display:block;line-height:1;margin:0;color:#fff;font-weight:300;font-style:normal;text-align:right;">It’s time to feel</em>
-                            <h2 style="font-weight:600;color:#fff;line-height:1;text-align:center;">THE <b style="font-weight:800;">POWER</b></h2>
-                            <div style="text-align:right;"><a href="#" class="btn btn-default" style="border:0;background-color:#fefefe;color:#777;font-weight:600;">SHOP NOW</a></div>
-                        </div>
-                    </div>
+                <div class="content-area" style="position:absolute;top:27%;left:7%;text-align:left;">
+                    <h2 style="font-family:'Oswald';font-weight:800;color:#000;line-height:1;">WINTER SALE<br/>GET 30% OFF<br/>ON JACKETS.</h2>
+                    <div style="text-align:left;"><a href="#" class="btn btn-default" style="border:0;background-color:#000;color:#fff;font-family:'Oswald';font-weight:400;border-radius:0;">SHOP BY JACKETS</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="item" style="background:#f0f0f0;background-image:linear-gradient(#e8e8e8,#f0f0f0);position:relative;">
+            <div style="width:100%;height:100%;width:100vw;height:100vh;background:url({{media url="wysiwyg/smartwave/porto/homepage/03/slider/slide2.jpg"}}) 80% top no-repeat; background-size:cover;"></div>
+            <div class="slide2-content" style="width:100%;height:100%;position:absolute;left:0;top:0;">
+                <div class="content-area" style="position:absolute;top:27%;left:7%;text-align:left;">
+                    <h2 style="font-family:'Oswald';font-weight:800;color:#000;line-height:1;">30% OFF<br/>ON HOLIDAY<br/>OCCASION SHOP.</h2>
+                    <div style="text-align:left;"><a href="#" class="btn btn-default" style="border:0;background-color:#000;color:#fff;font-family:'Oswald';font-weight:400;border-radius:0;">SHOP NOW</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="item" style="background:#f0f0f0;background-image:linear-gradient(#e8e8e8,#f0f0f0);position:relative;">
+            <div style="width:100%;height:100%;width:100vw;height:100vh;background:url({{media url="wysiwyg/smartwave/porto/homepage/03/slider/slide1.jpg"}}) 71% top no-repeat; background-size:cover;"></div>
+            <div class="slide1-content" style="width:100%;height:100%;position:absolute;left:0;top:0;">
+                <div class="content-area" style="position:absolute;top:27%;left:7%;text-align:left;">
+                    <h2 style="font-family:'Oswald';font-weight:800;color:#000;line-height:1;">GET 20% OFF<br/>ON SUMMER<br/>HATS.</h2>
+                    <div style="text-align:left;"><a href="#" class="btn btn-default" style="border:0;background-color:#000;color:#fff;font-family:'Oswald';font-weight:400;border-radius:0;">SHOP BY HATS</a></div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="copyright-text">COPYRIGHT 2016 PORTO. ALL RIGHTS RESERVED.</div>
     <script type="text/javascript">
         require([
             'jquery',
@@ -2348,6 +2333,408 @@
     <li><a class="linkedin-link" href="#"><em class="porto-icon-linkedin-squared"></em></a></li>
 </ul>
 <address>©Copyright 2016 by SW-THEMES.</address>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Porto - Homepage Slider 19</title>
+         <identifier>porto_homeslider_19</identifier>
+         <content><![CDATA[<div class="full-screen-slider">
+    <div id="banner-slider-demo-19" class="owl-carousel owl-bottom-narrow owl-banner-carousel">
+        <div class="item">
+            <div style="width:100%;height:100%;background:url({{media url="wysiwyg/smartwave/porto/homepage/19/slider/slide1.jpg"}}) 80% center no-repeat; background-size:cover;"></div>
+            <div class="slide-content" style="position: absolute; z-index: 5; left: 10.5%; top: 35%; text-align: left;">
+                <h2 style="color: #000;">WINTER SALE<br/>70% OFF</h2>
+                <p style="color: #000;">Shop new styles added to sale online.</p>
+                <a class="btn-line" href="#">SHOP NOW</a>
+            </div>
+        </div>
+        <div class="item">
+            <div style="width:100%;height:100%;background:url({{media url="wysiwyg/smartwave/porto/homepage/19/slider/slide2.jpg"}}) 80% center no-repeat; background-size:cover;"></div>
+            <div class="slide-content" style="position: absolute; z-index: 5; left: 10.5%; top: 35%; text-align: left;">
+                <h2 style="color: #000;">NEW SUMMER<br/>COLLECTION</h2>
+                <p style="color: #000;">New styles added to summer collection.</p>
+                <a class="btn-line" href="#">SHOP NOW</a>
+            </div>
+        </div>
+        <div class="item">
+            <div style="width:100%;height:100%;background:url({{media url="wysiwyg/smartwave/porto/homepage/19/slider/slide3.jpg"}}) 80% center no-repeat; background-size:cover;"></div>
+            <div class="slide-content" style="position: absolute; z-index: 5; left: 10.5%; top: 35%; text-align: left;">
+                <h2 style="color: #000;">CONVERSE<br/>30% OFF</h2>
+                <p style="color: #000;">Outlet converse 30% off for you.</p>
+                <a class="btn-line" href="#">SHOP NOW</a>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        require([
+            'jquery',
+            'owl.carousel/owl.carousel.min'
+        ], function ($) {
+            var owl_3 = $("#banner-slider-demo-19").owlCarousel({
+                items: 1,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                autoplayHoverPause: true,
+                dots: true,
+                navRewind: true,
+                animateIn: 'fadeIn',
+                animateOut: 'fadeOut',
+                loop: true,
+                nav: false,
+                navText: ["<em class='porto-icon-chevron-left'></em>","<em class='porto-icon-chevron-right'></em>"]
+            });
+        });
+    </script>
+</div>
+<style type="text/css">
+#banner-slider-demo-19 .owl-controls {
+    text-align: left;
+    padding-left: 10%;
+    bottom: 8%;
+}
+#banner-slider-demo-19 .owl-dots .owl-dot span {
+    width: 12px;
+    height: 12px;
+    border-width: 2px;
+}
+</style>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Porto - Custom Block for Header Type12</title>
+         <identifier>porto_custom_block_for_header_type12</identifier>
+         <content><![CDATA[<a href="https://www.facebook.com/" title="Facebook" target="_blank"><em class="porto-icon-facebook"></em></a>
+<a href="https://twitter.com/" title="Twitter" target="_blank"><em class="porto-icon-twitter"></em></a>
+<a href="https://www.instagram.com/" title="Instagram" target="_blank"><em class="porto-icon-instagram"></em></a>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Porto - Footer Middle - 1st Column for Demo19</title>
+         <identifier>porto_footer_middle_1_for_19</identifier>
+         <content><![CDATA[<img src="{{media url="wysiwyg/smartwave/porto/footer/logo_white_plus.png"}}" alt="" />]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Porto - Footer Middle - 2nd Column for Demo19</title>
+         <identifier>porto_footer_middle_2_for_19</identifier>
+         <content><![CDATA[<div class="block">
+    <div class="block-title"><strong>SHOP</strong></div>
+    <div class="block-content">
+        <ul class="links">
+            <li><a href="#" title="Fashion & Clothes">Fashion & Clothes</a></li>
+            <li><a href="#" title="Electronics & Computers">Electronics & Computers</a></li>
+            <li><a href="#" title="Toys & Hobbies">Toys & Hobbies</a></li>
+            <li><a href="#" title="Home & Garden">Home & Garden</a></li>
+            <li><a href="#" title="Decor & Furniture">Decor & Furniture</a></li>
+            <li><a href="#" title="Sports & Fitness">Sports & Fitness</a></li>
+            <li><a href="#" title="Gifts">Gifts</a></li>
+        </ul>
+    </div>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Porto - Footer Middle - 3rd Column for Demo19</title>
+         <identifier>porto_footer_middle_3_for_19</identifier>
+         <content><![CDATA[<div class="block">
+    <div class="block-title"><strong>MENU</strong></div>
+    <div class="block-content">
+        <ul class="links">
+            <li><a href="#" title="My Account">My Account</a></li>
+            <li><a href="#" title="Daily Deal">Daily Deal</a></li>
+            <li><a href="#" title="My Wishlist">My Wishlist</a></li>
+            <li><a href="#" title="Blog">Blog</a></li>
+            <li><a href="#" title="Login">Login</a></li>
+            <li><a href="#" title="About Us">About Us</a></li>
+            <li><a href="#" title="Contact">Contact</a></li>
+        </ul>
+    </div>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Porto - Footer Middle - 4th Column for Demo19</title>
+         <identifier>porto_footer_middle_4_for_19</identifier>
+         <content><![CDATA[<div class="block" style="margin-bottom:50px;">
+    <div class="block-title"><strong>FOLLOW US</strong></div>
+    <div class="block-content">
+        <a href="https://www.facebook.com/" title="Facebook" target="_blank" style="font-size: 22px;margin: 0 10px;margin-left: -10px;"><i class="porto-icon-facebook"></i></a>
+        <a href="https://twitter.com/" title="Twitter" target="_blank" style="font-size: 22px;margin: 0 10px;"><i class="porto-icon-twitter"></i></a>
+        <a href="https://www.instagram.com/" title="Instagram" target="_blank" style="font-size: 22px;margin: 0 10px;"><i class="porto-icon-instagram"></i></a>
+    </div>
+</div>
+<div class="block">
+    <div class="block-title"><strong>NEWSLETTER</strong></div>
+    <div class="block-content">
+        {{block class="Magento\Newsletter\Block\Subscribe" name="subscribe_form" template="subscribe_form.phtml"}}
+    </div>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Porto - Homepage Slider 20</title>
+         <identifier>porto_homeslider_20</identifier>
+         <content><![CDATA[<div class="full-screen-slider">
+    <div id="banner-slider-demo-20" class="owl-carousel owl-banner-carousel" data-slider-id="1">
+        <div class="item" style="background:url({{media url="wysiwyg/smartwave/porto/homepage/20/slider/01.jpg"}}) center center / cover no-repeat; position: relative;">
+            <div class="content" style="left:20%;top:30%;width:auto;">
+                <h2 style="color: #fff;">Running<br>shoes</h2>
+                <a href="#">SEE MORE</a>
+            </div>
+            <ul class="scene" style="width:100%;height:100%:">
+                <li class="layer" data-depth="0.05">
+                    <img src="{{media url="wysiwyg/smartwave/porto/homepage/20/slider/green_shoes.png"}}" alt="" />
+                </li>
+                <li class="layer" data-depth="0.06">
+                    <img src="{{media url="wysiwyg/smartwave/porto/homepage/20/slider/blurflake1.png"}}" style="position:absolute;top:40%;left:35%" alt="" />
+                </li>
+                <li class="layer" data-depth="0.07">
+                    <img src="{{media url="wysiwyg/smartwave/porto/homepage/20/slider/blurflake2.png"}}" class="animation-spin" style="position:absolute;top:20%;left:50%" alt="" />
+                </li>
+                <li class="layer" data-depth="0.10">
+                    <img src="{{media url="wysiwyg/smartwave/porto/homepage/20/slider/blurflake3.png"}}" class="animation-wave" style="position:absolute;top:50%;left:80%" alt="" />
+                </li>
+                <li class="layer" data-depth="0.15">
+                    <img src="{{media url="wysiwyg/smartwave/porto/homepage/20/slider/blurflake4.png"}}" style="position:absolute;top:70%;left:55%" alt="" />
+                </li>
+            </ul>
+        </div>
+        <div class="item" style="background:url({{media url="wysiwyg/smartwave/porto/homepage/20/slider/02.jpg"}}) center center / cover no-repeat; position: relative;">
+            <ul class="scene" style="width:100%;height:100%:">
+                <li class="layer" data-depth="0.05">
+                    <img src="{{media url="wysiwyg/smartwave/porto/homepage/20/slider/watch.png"}}" alt="" />
+                </li>
+            </ul>
+            <div class="content" style="left:20%;top:30%;width:auto;">
+                <h2 style="color: #fff;">Running smart<br>watch</h2>
+                <a href="#">SEE MORE</a>
+            </div>
+        </div>
+        <div class="item" style="background:url({{media url="wysiwyg/smartwave/porto/homepage/20/slider/03.jpg"}}) center center / cover no-repeat; position: relative;">
+            <ul class="scene" style="width:100%;height:100%:">
+                <li class="layer" data-depth="0.05">
+                    <img src="{{media url="wysiwyg/smartwave/porto/homepage/20/slider/ball.png"}}" alt="" />
+                </li>
+            </ul>
+            <div class="content" style="left:20%;top:30%;width:auto;">
+                <h2 style="color: #fff;">Football<br>accessories</h2>
+                <a href="#">SEE MORE</a>
+            </div>
+        </div>
+    </div>
+    <div class="owl-thumbs" data-slider-id="1">
+        <button class="owl-thumb-item"><img src="{{media url="wysiwyg/smartwave/porto/homepage/20/slider/01_thumb.jpg"}}"/></button>
+        <button class="owl-thumb-item"><img src="{{media url="wysiwyg/smartwave/porto/homepage/20/slider/02_thumb.jpg"}}"/></button>
+        <button class="owl-thumb-item"><img src="{{media url="wysiwyg/smartwave/porto/homepage/20/slider/03_thumb.jpg"}}"/></button>
+    </div>
+    <script type="text/javascript">
+        require([
+            'jquery',
+            'owl.carousel/owl.carousel'
+        ], function ($) {
+            var owl_20 = $("#banner-slider-demo-20").owlCarousel({
+                items: 1,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                autoplayHoverPause: true,
+                dots: false,
+                navRewind: true,
+                animateIn: 'fadeIn',
+                animateOut: 'fadeOut',
+                thumbs: true,
+                thumbImage: false,
+                thumbsPrerendered: true,
+                thumbContainerClass: 'owl-thumbs',
+                thumbItemClass: 'owl-thumb-item',
+                loop: true,
+                nav: false,
+                navText: ["<em class='porto-icon-chevron-left'></em>","<em class='porto-icon-chevron-right'></em>"]
+            });
+        });
+        require([
+            'jquery',
+            'js/jquery.parallax.min'
+        ], function ($) {
+            $(document).ready(function(){
+                $('.scene').parallax();
+            });
+        });
+    </script>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Porto - Footer Middle - 1st Column for Demo20</title>
+         <identifier>porto_footer_middle_1_for_20</identifier>
+         <content><![CDATA[<div class="row">
+    <div class="col-md-6">
+        <div class="block">
+            <div class="block-content">
+                <img src="{{media url="wysiwyg/smartwave/porto/footer/logo_white_plus.png"}}" alt="" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="block">
+            <div class="block-title"><strong>Features</strong></div>
+            <div class="block-content">
+                <ul class="links">
+                    <li><a href="#" title="Men">MEN</a></li>
+                    <li><a href="#" title="Women">WOMEN</a></li>
+                    <li><a href="#" title="Boys">BOYS</a></li>
+                    <li><a href="#" title="Girls">GIRLS</a></li>
+                    <li><a href="#" title="New Arrivals">NEW ARRIVALS</a></li>
+                    <li><a href="#" title="Shoes">SHOES</a></li>
+                    <li><a href="#" title="Clothes">CLOTHES</a></li>
+                    <li><a href="#" title="Accessories">ACCESSORIES</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Porto - Footer Middle - 2nd Column for Demo20</title>
+         <identifier>porto_footer_middle_2_for_20</identifier>
+         <content><![CDATA[<div class="block">
+    <div class="block-title"><strong>Menu</strong></div>
+    <div class="block-content">
+        <ul class="links">
+            <li><a href="#" title="About Us">ABOUT US</a></li>
+            <li><a href="#" title="Contact Us">CONTACT US</a></li>
+            <li><a href="#" title="My Account">MY ACCOUNT</a></li>
+            <li><a href="#" title="Blog">ORDERS HISTORY</a></li>
+            <li><a href="#" title="My Wishlist">MY WISHLIST</a></li>
+            <li><a href="#" title="Blog">BLOG</a></li>
+            <li><a href="#" title="Login">LOGIN</a></li>
+        </ul>
+    </div>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Porto - Footer Middle - 3rd Column for Demo20</title>
+         <identifier>porto_footer_middle_3_for_20</identifier>
+         <content><![CDATA[<div class="block">
+    <div class="block-title"><strong>Contact us</strong></div>
+    <div class="block-content">
+        <ul class="contact-info">
+            <li><p><b style="color:#fff;">ADDRESS:</b><br/>123 STREET NAME, CITY, ENGLAND</p></li>
+            <li><p><b style="color:#fff;">PHONE:</b><br/>(123) 456-7890</p></li>
+            <li><p><b style="color:#fff;">EMAIL:</b><br/><a href="mailto:mail@example.com">MAIL@EXAMPLE.COM</a></p></li>
+            <li><p><b style="color:#fff;">WORKING DAYS/HOURS:</b><br/>MON - SUN / 9:00AM - 8:00PM<br/><span style="color: #0f0;">OPEN NOW</span></p></li>
+        </ul>
+    </div>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Porto - Footer Middle - 4th Column for Demo20</title>
+         <identifier>porto_footer_middle_4_for_20</identifier>
+         <content><![CDATA[<div class="row">
+    <div class="col-md-6">
+        <div class="block" style="margin-bottom:50px;">
+            <div class="block-title"><strong>Follow us</strong></div>
+            <div class="block-content">
+                <p><a href="https://www.facebook.com/" title="Facebook" target="_blank" style="font-size: 22px;"><i class="porto-icon-facebook" style="color:#fff;vertical-align:middle;"></i><span style="font-size: 13px;vertical-align:middle;margin-left:5px;">FACEBOOK</span></a></p>
+                <p><a href="https://twitter.com/" title="Twitter" target="_blank" style="font-size: 22px;"><i class="porto-icon-twitter" style="color:#fff;vertical-align:middle;"></i><span style="font-size: 13px;vertical-align:middle;margin-left:5px;">TWITTER</span></a></p>
+                <p><a href="https://www.instagram.com/" title="Instagram" target="_blank" style="font-size: 22px;"><i class="porto-icon-instagram" style="color:#fff;vertical-align:middle;"></i><span style="font-size: 13px;vertical-align:middle;margin-left:5px;">INSTAGRAM</span></a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="block">
+            <div class="block-title"><strong>Join us</strong></div>
+            <div class="block-content">
+                <p>JOIN THE WORLD<br/>OF PORTO ECOMMERCE</p>
+                {{block class="Magento\Newsletter\Block\Subscribe" name="subscribe_form" template="subscribe_form.phtml"}}
+            </div>
+        </div>
+    </div>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Porto - Custom Block for Product Page Main Area</title>
+         <identifier>porto_product_main_custom_block</identifier>
+         <content><![CDATA[<img src="{{media url="wysiwyg/smartwave/porto/product/custom_image.jpg"}}" alt="" style="max-width: 100%; float: right;" />]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Porto - Footer Middle - 1st Column for Demo3</title>
+         <identifier>porto_footer_middle_1_for_3</identifier>
+         <content><![CDATA[<div class="block">
+    <div class="block-title"><strong>MENU</strong></div>
+    <div class="block-content">
+        <ul class="links">
+            <li><a href="{{store url=""}}about-porto-2" title="About Us">About Us</a></li>
+            <li><a href="{{store url=""}}customer/account" title="My Account">My Account</a></li>
+            <li><a href="{{store url=""}}sales/order/history" title="Orders History">Orders History</a></li>
+            <li><a href="{{store url=""}}catalogsearch/advanced" title="Advanced Search">Advanced Search</a></li>
+        </ul>
+    </div>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Porto - Footer Middle - 2nd Column for Demo3</title>
+         <identifier>porto_footer_middle_2_for_3</identifier>
+         <content><![CDATA[<div class="block">
+    <div class="block-title"><strong>FEATURES</strong></div>
+    <div class="block-content">
+        <ul class="links">
+            <li><a href="#" title="Page 1 - Lorem ipsum dolor">Page 1 - Lorem ipsum dolor</a></li>
+            <li><a href="#" title="Page 2 - Consectetur">Page 2 - Consectetur</a></li>
+            <li><a href="#" title="Page 3 - Adipiscing elit">Page 3 - Adipiscing elit</a></li>
+            <li><a href="#" title="Page 4 - Integer iaculis nisl">Page 4 - Integer iaculis nisl</a></li>
+            <li><a href="#" title="Page 5 - Pretium Ligula ornare">Page 5 - Pretium Ligula ornare</a></li>
+            <li><a href="#" title="Page 6 - Pellentesque">Page 6 - Pellentesque</a></li>
+        </ul>
+    </div>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Porto - Footer Middle - 3rd Column for Demo3</title>
+         <identifier>porto_footer_middle_3_for_3</identifier>
+         <content><![CDATA[<div class="block">
+    <div class="block-title"><strong>CONTACT US</strong></div>
+    <div class="block-content">
+        <ul class="contact-info">
+            <li><p>Address:<br/>123 Street Name, City,<br/>United States</p></li>
+            <li><p>Phone:<br/>(123) 456-7890</p></li>
+            <li><p>Email:<br/>mail@example.com</p></li>
+            <li><p>Working Days/Hours:<br/>Mon - Sun / 9:00AM - 8:00PM<br/><span style="color: #0f0;">Open now</span></p></li>
+        </ul>
+    </div>
+</div>]]></content>
+         <is_active>1</is_active>
+      </cms_item>
+      <cms_item>
+         <title>Porto - Footer Middle - 4th Column for Demo3</title>
+         <identifier>porto_footer_middle_4_for_3</identifier>
+         <content><![CDATA[<div class="row">
+    <div class="col-md-6">
+        <div class="block" style="margin-bottom:50px;">
+            <div class="block-title"><strong>FOLLOW US</strong></div>
+            <div class="block-content">
+                <p><a href="https://www.facebook.com/" title="Facebook" target="_blank" style="font-size: 22px;"><i class="porto-icon-facebook" style="color:#fff;vertical-align:middle;"></i><span style="font-size: 13px;vertical-align:middle;margin-left:5px;">FACEBOOK</span></a></p>
+                <p><a href="https://twitter.com/" title="Twitter" target="_blank" style="font-size: 22px;"><i class="porto-icon-twitter" style="color:#fff;vertical-align:middle;"></i><span style="font-size: 13px;vertical-align:middle;margin-left:5px;">TWITTER</span></a></p>
+                <p><a href="https://www.instagram.com/" title="Instagram" target="_blank" style="font-size: 22px;"><i class="porto-icon-instagram" style="color:#fff;vertical-align:middle;"></i><span style="font-size: 13px;vertical-align:middle;margin-left:5px;">INSTAGRAM</span></a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="block">
+            <div class="block-title"><strong>JOIN US</strong></div>
+            <div class="block-content">
+                <p style="margin-bottom: 20px;">Get all the latest information on Events,<br>Sales and Offers. Sign up for newsletter today.</p>
+                {{block class="Magento\Newsletter\Block\Subscribe" name="subscribe_form" template="subscribe_form.phtml"}}
+            </div>
+        </div>
+    </div>
+</div>]]></content>
          <is_active>1</is_active>
       </cms_item>
    </blocks>

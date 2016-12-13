@@ -1,0 +1,30 @@
+<?php
+    $porto_helper = $this->helper('Smartwave\Porto\Helper\Data');
+    $page_layout = $porto_helper->getConfig('porto_settings/product/page_layout');
+    $move_upsell = $porto_helper->getConfig('porto_settings/product/move_upsell');
+    $move_addtolinks = $porto_helper->getConfig('porto_settings/product/move_addtolinks');
+?>
+<script type="text/javascript">
+require([
+    'jquery'
+], function ($) {
+    $(document).ready(function(){
+    <?php if($page_layout != "page-layout-2columns-right"): ?>
+        if($("body").hasClass("page-layout-2columns-right")) {
+            $("body").removeClass("page-layout-2columns-right").addClass("<?php echo $page_layout; ?>");
+            <?php if($page_layout == "page-layout-1column"): ?>
+            $(".columns > .sidebar").remove();
+            <?php endif; ?>
+        }
+    <?php endif; ?>
+    <?php if($move_upsell): ?>
+        $(".product.media").after($(".block.upsell").detach());
+    <?php endif; ?>
+    <?php if($move_addtolinks): ?>
+        $(".box-tocart .actions").after('<div class="moved-add-to-links"></div>');
+        $(".product-social-links > .product-addto-links").appendTo(".moved-add-to-links");
+        $(".product-social-links > .action.mailto").appendTo(".moved-add-to-links");
+    <?php endif; ?>
+    });
+});
+</script>

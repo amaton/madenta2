@@ -21,12 +21,14 @@
     &:extend(.abs-add-fields all);
 }
 
-.product-social-links .action.mailto.friend {
-    &:extend(.abs-actions-addto all);
-    .lib-icon-font-symbol(
-        @_icon-font-content: @icon-envelope,
-        @_icon-font-position: before
-    );
+.product-social-links, .moved-add-to-links {
+    .action.mailto.friend {
+        &:extend(.abs-actions-addto all);
+        .lib-icon-font-symbol(
+            @_icon-font-content: @icon-envelope,
+            @_icon-font-position: before
+        );
+    }
 }
 
 }

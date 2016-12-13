@@ -63,7 +63,7 @@
                 <actions>1</actions>
                 <addtocompare>1</addtocompare>
                 <addtowishlist>1</addtowishlist>
-                <!--<page_layout>two_column_left</page_layout>-->
+                <page_layout>page-layout-2columns-left</page_layout>
                 <category_description>main_column</category_description>
                 <side_custom_block>porto_category_side_custom_block</side_custom_block>
             </category>
@@ -76,11 +76,15 @@
                 <ratio_width>600</ratio_width>
                 <ratio_height>800</ratio_height>-->
                 <product_image_size>6</product_image_size>
+                <main_custom_block></main_custom_block>
                 <side_custom_block>porto_product_side_custom_block</side_custom_block>
                 <prev_next>1</prev_next>
                 <prev_text><![CDATA[<em class="porto-icon-left-open"></em>]]></prev_text>
                 <next_text><![CDATA[<em class="porto-icon-right-open"></em>]]></next_text>
-                <!--<page_layout>two_column_right</page_layout>-->
+                <page_layout>page-layout-2columns-right</page_layout>
+                <upsell_columns>4</upsell_columns>
+                <custom_social><![CDATA[<div class="addthis_inline_share_toolbox"></div>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6907796e30f69"></script>]]></custom_social>
             </product>
             <product_label>
                 <new_label>1</new_label>

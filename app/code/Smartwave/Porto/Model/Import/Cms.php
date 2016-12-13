@@ -62,7 +62,7 @@ class Cms
         $this->_parser = new \Magento\Framework\Xml\Parser();
     }
 
-    public function importCms($type)
+    public function importCms($type, $demo_version)
     {
         // Default response
         $gatewayResponse = new DataObject([
@@ -74,57 +74,75 @@ class Cms
 
         try {
             $xmlPath = $this->_importPath . $type . '.xml';
+            $demoCMSxmlPath = $this->_importPath . 'demo_cms.xml';
+            
             $overwrite = false;
             
             if($this->_scopeConfig->getValue("porto_settings/install/overwrite_".$type)) {
                 $overwrite = true;
             }
             
-            if (!is_readable($xmlPath))
+            if (!is_readable($xmlPath) || !is_readable($demoCMSxmlPath))
             {
                 throw new \Exception(
                     __("Can't get the data file for import cms blocks/pages: ".$xmlPath)
                 );
             }
             $data = $this->_parser->load($xmlPath)->xmlToArray();
+            $cms_data = $this->_parser->load($demoCMSxmlPath)->xmlToArray();
+            
+            $arr = array();
+            if($demo_version != "0") {
+                foreach($cms_data['root']['demos'][$demo_version][$type]['item'] as $item) {
+                    if(!is_array($item)) {
+                        $arr[] = $item;
+                    } else {
+                        foreach($item as $__item) {
+                            $arr[] = $__item;
+                        }
+                    }
+                }
+            }
             $cms_collection = null;
             $conflictingOldItems = array();
             
             $i = 0;
             foreach($data['root'][$type]['cms_item'] as $_item) {
                 $exist = false;
-                if($type == "blocks") {
-                    $cms_collection = $this->_blockCollectionFactory->create()->addFieldToFilter('identifier', $_item['identifier']);
-                    if(count($cms_collection) > 0)
-                        $exist = true;
-                    
-                }else {
-                    $cms_collection = $this->_pageCollectionFactory->create()->addFieldToFilter('identifier', $_item['identifier']);
-                    if(count($cms_collection) > 0)
-                        $exist = true;
-                    
-                }
-                if($overwrite) {
-                    if($exist) {
-                        $conflictingOldItems[] = $_item['identifier'];
-                        if($type == "blocks")
-                            $this->_blockRepository->deleteById($_item['identifier']);
-                        else
-                            $this->_pageRepository->deleteById($_item['identifier']);
+                if($demo_version == "0" || in_array($_item['identifier'],$arr)){
+                    if($type == "blocks") {
+                        $cms_collection = $this->_blockCollectionFactory->create()->addFieldToFilter('identifier', $_item['identifier']);
+                        if(count($cms_collection) > 0)
+                            $exist = true;
+                        
+                    }else {
+                        $cms_collection = $this->_pageCollectionFactory->create()->addFieldToFilter('identifier', $_item['identifier']);
+                        if(count($cms_collection) > 0)
+                            $exist = true;
+                        
                     }
-                } else {
-                    if($exist) {
-                        $conflictingOldItems[] = $_item['identifier'];
-                        continue;
+                    if($overwrite) {
+                        if($exist) {
+                            $conflictingOldItems[] = $_item['identifier'];
+                            if($type == "blocks")
+                                $this->_blockRepository->deleteById($_item['identifier']);
+                            else
+                                $this->_pageRepository->deleteById($_item['identifier']);
+                        }
+                    } else {
+                        if($exist) {
+                            $conflictingOldItems[] = $_item['identifier'];
+                            continue;
+                        }
                     }
+                    $_item['stores'] = [0];
+                    if($type == "blocks") {
+                        $this->_blockFactory->create()->setData($_item)->save();
+                    } else {
+                        $this->_pageFactory->create()->setData($_item)->save();
+                    }
+                    $i++;
                 }
-                $_item['stores'] = [0];
-                if($type == "blocks") {
-                    $this->_blockFactory->create()->setData($_item)->save();
-                } else {
-                    $this->_pageFactory->create()->setData($_item)->save();
-                }
-                $i++;
             }
             $message = "";
             if ($i)
@@ -134,7 +152,7 @@ class Cms
             
             $gatewayResponse->setIsValid(true);
             $gatewayResponse->setRequestSuccess(true);
-
+            
             if ($gatewayResponse->getIsValid()) {
                 if ($overwrite){
                     if($conflictingOldItems){
