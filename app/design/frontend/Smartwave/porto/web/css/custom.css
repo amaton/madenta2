@@ -10,6 +10,93 @@ body > p {
 .clearer {
     clear:both;
 }
+
+.frame-delivery-payment{margin-bottom: 8px;}
+.frame-delivery-payment dt{padding: 0 0 0;}
+.frame-delivery-payment dd{padding: 5px 0 20px;}
+.list-style-1 li{list-style: none; position: relative;padding-left: 22px; color:#666; margin-bottom: 4px}
+.list-style-1 li .help {color:#999; display: block;}
+.list-style-1 li:before{content: "";position: absolute;left: 4px;top: 3px;background-position: -640px -140px; width: 14px; height:13px;}
+    .frame-delivery-payment{margin-bottom: 8px;}
+    .frame-delivery-payment dt{padding: 0 0 0;}
+    .frame-delivery-payment dd{padding: 5px 0 20px;}
+    .list-style-1{margin: 0; padding: 0}
+    .list-style-1 li{position: relative;padding-left: 22px; color:#666; margin-bottom: 4px; list-style: none}
+    .list-style-1 li .porto-icon-ok.theme-color{ font-size: 12px; color: #00A000; float: none;
+        width: auto;
+        height: auto;
+        line-height: inherit;
+        border: none;
+        border-radius: 0;
+        text-align: inherit;
+        margin-right: 0;
+
+    }
+    .list-style-1 li .help {color:#999; display: block;}
+    .list-style-1 li:before{content: "";position: absolute;left: 4px;top: 3px;width: 14px; height:13px;}
+    .sidebar .custom-block.custom-block-1 > div em.porto-icon-ok.theme-color{  font-size: 10px;  float: left;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        border: none;
+        border-radius: 0;
+        text-align: center;
+        margin-right: 10px;
+        color: green!important;
+    }
+
+.filter-id-Kategoriya .filter-options-content .item a {
+    font-size: 16px !important;
+}
+
+/* benefits */
+.f-s_0 > * {
+    font-size: 13px;
+}
+.helper {
+    vertical-align: middle;
+    width: 0;
+    height: 100%;
+    padding: 0 !important;
+    border: 0 !important;
+    display: inline-block;
+}
+.f-s_0, .f-s_0 .f-s_0 {
+    font-size: 0;
+}
+.frame-benefits{padding: 0 !important; margin: 0 !important; position: relative;}
+.frame-benefits-product{margin: 0;padding: 0;overflow: hidden;}
+.items-benefits > li{position: relative;width: 25%;padding-top: 0; display: inline-block;}
+.items-benefits > li:before{content: "";width: 2px;height: 67px;position: absolute;top: 0;left: -27px;}
+.vertical-layout .items-benefits > li:before{left: -7px;}
+.items-benefits > li:first-child:before{display: none;}
+.frame-symbol-benefit > [class*="symbol-"]{position: relative;z-index: 1;}
+.frame-description-benefit p{margin-bottom: 0;}
+.frame-description-benefit .title{text-transform: uppercase;}
+
+.frame-benefits-product .frame-benefits{margin-bottom: 0;}
+.frame-benefits-product .frame-benefits:after{content: "";position: absolute;width: 110%;left: -5%;top: 100%;height: 5px;margin-top: -5px;-moz-box-shadow: 0 2px 4px #ece9e6;-webkit-box-shadow: 0 2px 4px #ece9e6;box-shadow: 0 2px 4px #ece9e6;}
+
+.frame-benefits {
+    background: url(/pub/media/porto/page_bg/default/h_f.png) repeat-x;
+    background-position: 0 -254px;
+    height: 97px;
+    border-bottom: 1px solid #fcfcfc;
+    padding: 18px 0 0;
+    position: relative;
+}
+.items-benefits > li:before{background-position: 0 -10px;}
+.frame-description-benefit p{color: #999;}
+.frame-symbol-benefit{text-align: center;width: 67px;height: 66px;position: relative; background: none; text-indent: -10px;display: inline-block; vertical-align: top;}
+.frame-symbol-benefit > [class*="symbol-"]{background: url("/pub/media/porto/page_bg/default/benefits.png") no-repeat; display: inline-block;}
+.frame-symbol-benefit > .symbol-benefits_1{width: 67px;height: 66px;background-position: 0 0;}
+.frame-symbol-benefit > .symbol-benefits_2{width: 67px;height: 66px;background-position: -67px 0;}
+.frame-symbol-benefit > .symbol-benefits_3{width: 67px;height: 66px;background-position: -134px 0;}
+.frame-symbol-benefit > .symbol-benefits_4{width: 67px;height: 66px;background-position: -201px 0;}
+.frame-description-benefit{margin-left: 7px;height: 30px;padding-right: 10px;display: inline-block;}
+.frame-description-benefit .title {font-weight: bold; color: #333;}
+/* benefits */
+
 @media (min-width: 1200px) {
     .col-lg-2-4 {
         width: 20%;
@@ -34,6 +121,48 @@ body > p {
     .page-header.type12 .header.panel .top-panel .customer-menu .links > li:first-child > a {
         padding-left: 15px;
     }
+
+    .sw-megamenu.navigation li.level0:first-child,
+    .sw-megamenu.navigation li.level0:last-child{
+        display: none!important;
+    }
+    .sw-megamenu.navigation > ul{display: table;}
+    .sw-megamenu.navigation li.level0.fullwidth{display: table-cell; vertical-align: middle;}
+    .navigation .level0 > .level-top{line-height: 16px !important; padding: 12px !important;}
+    .page-header.type2 .navigation .level0.parent > a:after{line-height: 16px !important;}
+    .page-header .navigation .level0.parent > a:after{position: absolute; display: none;}
+    header.page-header.sticky-header .navigation li.level0 > .level-top{line-height: 16px;}
+
+    .navigation li.level0 {
+        border-right: solid 1px #CC3D43;
+    }
+
+    .navigation li.level0 > .submenu {
+        left: auto !important;
+        width: 200px !important;
+        background: #EE3D43;
+    }
+    .navigation .subchildmenu.mega-columns.columns4 > li {
+        width: 100% !important;
+        border-bottom: solid 1px #CC3D43;
+    }
+    .navigation .subchildmenu.mega-columns.columns4 > li span {
+        display: block;
+        padding-bottom: 5px;
+        color: #fff;
+        line-height: 1.3;
+    }
+    .navigation .subchildmenu.mega-columns.columns4 > li:hover {
+        background: #CC3D43;
+    }
+    .navigation .subchildmenu.mega-columns.columns4 > li:hover a {
+
+    }
+    .navigation .subchildmenu.mega-columns.columns4 > li a:hover span {
+        text-decoration: none !important;
+        cursor: pointer;
+    }
+
 }
 .btn-default {
     color: #fff;
