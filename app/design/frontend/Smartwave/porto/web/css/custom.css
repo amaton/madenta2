@@ -4,6 +4,7 @@
 body > p {
     display: none;
 }
+
 .toolbar .modes > a {
     text-decoration: none;
 }
