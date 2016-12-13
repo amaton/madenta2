@@ -5,10 +5,6 @@ body > p {
     display: none;
 }
 
-.page-main .columns {
-    margin-top: 20px;
-}
-
 .toolbar .modes > a {
     text-decoration: none;
 }
