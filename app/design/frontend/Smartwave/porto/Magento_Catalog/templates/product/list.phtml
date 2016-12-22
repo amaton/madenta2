@@ -188,8 +188,7 @@ $flex_grid = "";
                         <?php
                         $manufacturerId = $_product->getManufacturer();
                         $attr = $_product->getResource()->getAttribute('manufacturer');
-                        if ($attr->usesSource()) {
-                            $optionText = $attr->getSource()->getOptionText($manufacturerId);
+                        if ($attr->usesSource() && $optionText = $attr->getSource()->getOptionText($manufacturerId)) {
                             echo 'Бренд: '.$optionText;
                         }
                         ?>
