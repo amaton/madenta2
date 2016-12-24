@@ -30,7 +30,6 @@
         <move element="navigation.sections" destination="porto_header"/>
         <move element="top.search" destination="porto_header"/>
         <move element="minicart" destination="porto_header"/>
-        <move element="currency" destination="porto_header"/>
         <move element="logo" destination="porto_header"/>
         <move element="skip_to_content" destination="porto_header"/>
 

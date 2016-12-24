@@ -12,6 +12,10 @@ body > p {
     clear:both;
 }
 
+.columns {
+    padding-top: 15px;
+}
+
 .frame-delivery-payment{margin-bottom: 8px;}
 .frame-delivery-payment dt{padding: 0 0 0;}
 .frame-delivery-payment dd{padding: 5px 0 20px;}
