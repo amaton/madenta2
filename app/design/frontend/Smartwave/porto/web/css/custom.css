@@ -13,6 +13,10 @@ body > p {
     font-size: 16px !important;
 }
 
+.columns {
+    padding-top: 15px;
+}
+
 /* benefits */
 .f-s_0 > * {
     font-size: 13px;
