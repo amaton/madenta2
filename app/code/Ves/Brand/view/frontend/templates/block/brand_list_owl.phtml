@@ -52,19 +52,19 @@ foreach ($_brandCollection as $_brand) {
 } 
 ?>
 <div class="block widget ves-widget brand-widget <?php echo $addition_class?$addition_class:'' ?>">
-	<?php if($title){ ?>
+<!--	<?php if($title){ ?>
 	<div class="block-title"><strong><?php echo $title ?></strong></div>
-	<?php } ?>
+	<?php } ?> -->
 	<?php if($pretext!=''){ ?>
 	<div class="pretext-html"><?php echo $pretext ?></div>
 	<?php } ?>
-	<div class="block-content brandowl-play">
+	<div class="block-content brandowl-play row"  style="margin-left:-10px;margin-right:-10px; max">
 		<ul id="ves-carousel<?php echo $blockId ?>" class="owl-carousel" data-rtl="<?php echo $rtl?"true":"false" ?>" data-loop="<?php echo $loop?"true":"false" ?>" data-nav="false" data-dot="<?php echo $dots?"true":"false" ?>" data-autoplay="<?php echo $autoplay?"true":"false" ?>" data-autoplay-timeout="<?php echo $autoplay_timeout ?>" data-pauonhover="<?php echo $autoplay_pauseonhover?"true":"false" ?>" data-mobile-items="<?php echo (int)$mobile_items ?>" data-tablet-small-items="<?php echo (int)$tablet_small_items ?>" data-tablet-items="<?php echo (int)$tablet_items ?>" data-portrait-items="<?php echo (int)$portrait_items ?>" data-large-items="<?php echo (int)$default_items ?>" data-large-max-items="<?php echo (int)$large_items ?>" >
 			<?php foreach ($_collection as $_brandCollection) { ?>
 			<li class="item">
 				<?php foreach ($_brandCollection as $_brand) { ?>
 				<div class="brand-item">
-					<div class="brand-image"><a href="<?php echo $_brand->getUrl(); ?>" title="<?php echo $_brand->getName(); ?>"><img src="<?php echo $_brand->getThumbnailUrl(); ?>" alt="<?php echo $_brand->getName(); ?>"/></a></div>
+					<div class="brand-image"><a href="<?php echo $_brand->getUrl(); ?>" title="<?php echo $_brand->getName(); ?>"><img style="max-height: 100px;" src="<?php echo $_brand->getThumbnailUrl(); ?>" alt="<?php echo $_brand->getName(); ?>"/></a></div>
 					<?php if($show_brand_name){ ?>
 					<div class="brand-name"><a href="<?php echo $_brand->getUrl(); ?>" title="<?php echo $_brand->getName(); ?>"><?php echo $_brand->getName() ?></a></div>
 					<?php } ?>
