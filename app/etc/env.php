@@ -51,6 +51,7 @@ return array (
     'config_integration_api' => 1,
     'translate' => 1,
     'config_webservice' => 1,
+    'compiled_config' => 1,
   ),
   'install' => 
   array (

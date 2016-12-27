@@ -131,5 +131,8 @@ return array (
     'Smartwave_Megamenu' => 1,
     'Smartwave_Porto' => 1,
     'Smartwave_Socialfeeds' => 1,
+    'Ves_All' => 1,
+    'Ves_Brand' => 1,
+    'Ves_Setup' => 1,
   ),
 );
