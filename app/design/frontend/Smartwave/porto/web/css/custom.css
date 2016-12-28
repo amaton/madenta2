@@ -22,6 +22,27 @@ body > p {
     float: none !important;
 }
 
+.header-pages-menu {
+    background: url(/pub/media/porto/page_bg/default/h_f.png) repeat-x;
+    background-position: 0 0;
+    height: 38px;
+    width: 100%;
+}
+
+.header-pages-menu ul {
+    text-align: left;
+}
+
+.header-pages-menu li {
+    list-style: none;
+    display: inline-block;
+}
+
+.header-pages-menu li a {
+    padding: 10px;
+    color: #666;
+}
+
 .frame-delivery-payment{margin-bottom: 8px;}
 .frame-delivery-payment dt{padding: 0 0 0;}
 .frame-delivery-payment dd{padding: 5px 0 20px;}
