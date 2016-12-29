@@ -8,7 +8,8 @@ class Tabstyle implements \Magento\Framework\Option\ArrayInterface
         return [
             ['value' => '', 'label' => __('Horizontal')], 
             ['value' => 'vertical', 'label' => __('Vertical')], 
-            ['value' => 'accordion', 'label' => __('Accordion')]
+            ['value' => 'accordion', 'label' => __('Accordion')], 
+            ['value' => 'sticky', 'label' => __('Sticky Tab')]
         ];
     }
 
@@ -17,7 +18,8 @@ class Tabstyle implements \Magento\Framework\Option\ArrayInterface
         return [
             '' => __('Horizontal'), 
             'vertical' => __('Vertical'), 
-            'accordion' => __('Accordion')
+            'accordion' => __('Accordion'), 
+            'sticky' => __('Sticky Tab')
         ];
     }
 }

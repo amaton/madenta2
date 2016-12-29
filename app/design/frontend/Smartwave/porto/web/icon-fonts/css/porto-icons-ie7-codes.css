@@ -1,4 +1,5 @@
 
+.porto-icon-spinner { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf110;&nbsp;'); }
 .porto-icon-up-open { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf800;&nbsp;'); }
 .porto-icon-right-open { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf801;&nbsp;'); }
 .porto-icon-left-open { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf802;&nbsp;'); }
@@ -54,6 +55,7 @@
 .porto-icon-th-list { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf83a;&nbsp;'); }
 .porto-icon-chart-bar { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf83b;&nbsp;'); }
 .porto-icon-heart-empty { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf83c;&nbsp;'); }
+.porto-icon-instagram { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf83d;&nbsp;'); }
 .porto-icon-up { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf840;&nbsp;'); }
 .porto-icon-right { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf841;&nbsp;'); }
 .porto-icon-down { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf842;&nbsp;'); }
@@ -87,3 +89,21 @@
 .porto-icon-tag { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf863;&nbsp;'); }
 .porto-icon-tags { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf864;&nbsp;'); }
 .porto-icon-calendar { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf865;&nbsp;'); }
+.porto-icon-circle-empty { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf870;&nbsp;'); }
+.porto-icon-shirt { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf871;&nbsp;'); }
+.porto-icon-computer { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf872;&nbsp;'); }
+.porto-icon-toys { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf873;&nbsp;'); }
+.porto-icon-garden { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf874;&nbsp;'); }
+.porto-icon-couch { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf875;&nbsp;'); }
+.porto-icon-sports { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf876;&nbsp;'); }
+.porto-icon-gift { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf877;&nbsp;'); }
+.porto-icon-eye { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf878;&nbsp;'); }
+.porto-icon-export { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf879;&nbsp;'); }
+.porto-icon-bag { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf87a;&nbsp;'); }
+.porto-icon-search-1 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf87b;&nbsp;'); }
+.porto-icon-check { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf87c;&nbsp;'); }
+.porto-icon-check-empty { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf87d;&nbsp;'); }
+.porto-icon-search-2 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf880;&nbsp;'); }
+.porto-icon-bag-1 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf881;&nbsp;'); }
+.porto-icon-plus { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf882;&nbsp;'); }
+.porto-icon-minus { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf883;&nbsp;'); }

@@ -35,7 +35,7 @@
                         <strong role="heading" aria-level="2" class="block-subtitle filter-subtitle"><?php /* @escapeNotVerified */ echo __('Shopping Options') ?></strong>
                         <div class="filter-options" id="narrow-by-list" data-role="content" data-mage-init='{"accordion":{"openedState": "active", "collapsible": true, "active": false, "multipleCollapsible": false}}'>
                     <?php  $wrapOptions = true; endif; ?>
-                    <div data-role="collapsible" class="filter-options-item filter-id-<?php /* @escapeNotVerified */ echo transliterator_transliterate('Russian-Latin/BGN', $filter->getName()) ?> <?php if($i==0): ?>allow active<?php endif; ?>">
+                    <div data-role="collapsible" class="filter-options-item <?php if($i==0): ?>allow active<?php endif; ?>">
                         <div data-role="title" class="filter-options-title"><?php /* @escapeNotVerified */ echo __($filter->getName()) ?></div>
                         <div data-role="content" class="filter-options-content"><?php /* @escapeNotVerified */ echo $block->getChildBlock('renderer')->render($filter); ?></div>
                     </div>

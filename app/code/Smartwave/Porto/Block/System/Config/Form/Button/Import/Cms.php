@@ -24,6 +24,17 @@ class Cms extends \Magento\Config\Block\System\Config\Form\Field
     
     protected $_importType;
     
+    private $_helper;
+    
+    public function __construct(
+        \Magento\Backend\Block\Template\Context $context,
+        \Smartwave\Porto\Helper\Data $helper
+    ) {
+        $this->_helper = $helper;
+        
+        parent::__construct($context);
+    }
+    
     /**
      * Set Button Label
      *
@@ -124,15 +135,22 @@ class Cms extends \Magento\Config\Block\System\Config\Form\Field
         if($type) {
             $this->setImportType($type);
         }
+        $after_html = "";
+        $button_class = "";
+        if(!$this->_helper->checkPurchaseCode()) {
+            $button_class = "disabled";
+            $after_html = '<em style="color:#f00;font-size:10px;line-height:1;">Activation is required.</em>';
+        }
         $this->addData(
             [
                 'button_label' => __($buttonLabel),
-                'import_type' => $type,
+                'import_type' => $type,                
+                'button_class' => $button_class,
                 'html_id' => $element->getHtmlId(),
                 'ajax_url' => $this->_urlBuilder->getUrl($action),
             ]
         );
 
-        return $this->_toHtml();
+        return $this->_toHtml().$after_html;
     }
 }

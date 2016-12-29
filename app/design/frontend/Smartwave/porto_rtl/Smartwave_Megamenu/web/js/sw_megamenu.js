@@ -60,7 +60,7 @@
                 }, 300);
             }
         });
-        $("li.ui-menu-item > .open-children-toggle").click(function(){
+        $("li.ui-menu-item > .open-children-toggle").off("click").on("click", function(){
             if(!$(this).parent().children(".submenu").hasClass("opened")) {
                 $(this).parent().children(".submenu").addClass("opened");
                 $(this).parent().children("a").addClass("ui-state-active");

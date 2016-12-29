@@ -203,6 +203,13 @@ body.boxed {
 body.boxed .page-wrapper {
     width: 100%;
 }
+header.page-header.type14 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0,0,0,0.8);
+}
 .cms-index-index .page-header.type3 {
     position: fixed;
     top: 0;
@@ -212,42 +219,85 @@ body.boxed .page-wrapper {
     width: 100%;
     max-height: 100%;
 }
-.page-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    left: 0;
-    z-index: 1;
-}
-.page-main, .footer-top, .footer-middle {
+.page-main, .page-footer {
     display: none;
 }
-.footer-bottom {
-    padding: 10px 0;
-    background-color: #fff;
-    background-color: rgba(255,255,255,0.85);
+#banner-slider-demo-3 div.content-area h2 {
+    font-size: 70px;
+    margin: 5px 0 45px;
+    letter-spacing: 5px;
+}
+#banner-slider-demo-3 div.content-area a.btn-default {
+    font-size: 14px;
+    letter-spacing: 1px;
+    padding: 18px 40px;
+    width: auto;
+    height: auto;
+    line-height: 1;
+}
+.full-screen-slider > div.copyright-text {
+    font-family: 'Oswald';
+    font-weight: 400;
+    font-size: 12px;
+    color: #000;
+    line-height: 92px;
+    position: absolute;
+    left: 100px;
+    bottom: 0;
+    z-index: 2;
+}
+@media (max-width: 1899px) {
+    .full-screen-slider > div.copyright-text {
+        left: 70px;
+    }
+}
+@media (max-width: 1679px) {
+    #banner-slider-demo-3 div.content-area h2 {
+        font-size: 70px;
+        margin: 4px 0 35px;
+        letter-spacing: 4px;
+    }
+    .full-screen-slider > div.copyright-text {
+        line-height: 60px;
+    }
+}
+@media (max-width: 1439px) {
+    .full-screen-slider > div.copyright-text {
+        left: 30px;
+    }
 }
 @media (max-width: 1199px) {
-    .footer-bottom .custom-block.f-right, .footer-bottom .custom-block ul.links {
-        display: none;
+    #banner-slider-demo-3 div.content-area h2 {
+        font-size: 50px;
+        margin: 4px 0 35px;
+        letter-spacing: 4px;
+    }
+}
+@media (max-width: 991px) {
+    #banner-slider-demo-3 div.content-area h2 {
+        font-size: 40px;
+        margin: 4px 0 30px;
+        letter-spacing: 3px;
+    }
+    #banner-slider-demo-3 div.content-area a.btn-default {
+        font-size: 11px;
+        padding: 15px 25px;
     }
 }
 @media (max-width: 767px) {
-    .footer-bottom .custom-block {
-        text-align: center;
+    #banner-slider-demo-3 div.content-area h2 {
+        font-size: 30px;
+        margin: 4px 0 20px;
+        letter-spacing: 2px;
     }
-    .footer-bottom .social-icons {
-        float: none;
-        margin: 0;
+    #banner-slider-demo-3 div.content-area a.btn-default {
+        font-size: 10px;
+        padding: 10px 20px;
     }
-    .footer-bottom address {
-        float: none;
-        text-align: center;
-    }
-}
-@media (max-width: 640px) {
-    .footer-bottom address {
-        display: none;
+    .full-screen-slider > div.copyright-text {
+        font-size: 10px;
+        line-height: 40px;
+        left: 20px;
     }
 }
 </style>]]></content>
@@ -2278,6 +2328,195 @@ body.boxed .page-wrapper {
 </referenceContainer>]]></layout_update_xml>
       </cms_item>
       <cms_item>
+         <title>Porto - Homepage 19</title>
+         <identifier>porto_home_19</identifier>
+         <content><![CDATA[{{block class="Smartwave\Porto\Block\Template" template="Smartwave_Megamenu::onepagecategory/onepagecategory.phtml" aspect_ratio="1" image_width="300" image_height="300" lazy_owl="1" columns="{ 0:{items:2},768:{items:3},992:{items:4},1200:{items:5} }" product_count="12"}}]]></content>
+         <is_active>1</is_active>
+         <page_layout>1column</page_layout>
+         <layout_update_xml><![CDATA[<referenceContainer name="page.top">
+    <block class="Magento\Cms\Block\Block" name="home_slider">
+        <arguments>
+            <argument name="block_id" xsi:type="string">porto_homeslider_19</argument>
+        </arguments>
+    </block>
+</referenceContainer>]]></layout_update_xml>
+      </cms_item>
+      <cms_item>
+         <title>Porto - Homepage 20</title>
+         <identifier>porto_home_20</identifier>
+         <content><![CDATA[<div style="padding: 0 15px;margin-bottom: 50px;">
+    <h2 class="filterproduct-title"><span class="content"><strong>Featured Items</strong></span></h2>
+    <div id="featured_product">
+        {{block class="Smartwave\Filterproducts\Block\Home\FeaturedList" name="featured_product" product_count="10" aspect_ratio="1" image_width="212" category_id="94" template="owl_list.phtml"}}
+    </div>
+    <script type="text/javascript">
+        require([
+            'jquery',
+            'owl.carousel/owl.carousel.min'
+        ], function ($) {
+            $("#featured_product .owl-carousel").owlCarousel({
+                autoplay: true,
+                autoplayTimeout: 5000,
+                autoplayHoverPause: true,
+                loop: true,
+                navRewind: true,
+                margin: 10,
+                nav: false,
+                navText: ["<em class='porto-icon-left-open-huge'></em>","<em class='porto-icon-right-open-huge'></em>"],
+                dots: true,
+                responsive: {
+                    0: {
+                        items:2
+                    },
+                    768: {
+                        items:3
+                    },
+                    992: {
+                        items:4
+                    },
+                    1200: {
+                        items:5
+                    }
+                }
+            });
+        });
+    </script>
+</div>
+<div id="home-content-slider-demo-20" class="owl-carousel owl-bottom-narrow owl-banner-carousel">
+    <div class="item" style="position:relative;">
+        <img src="{{media url="wysiwyg/smartwave/porto/homepage/20/content/home_shoes.jpg"}}" alt="" />
+        <div class="content" style="position:absolute;right:15%;top:20%">
+            <h3>Adidas Ultra Boost</h3>
+            <p><img src="{{media url="wysiwyg/smartwave/porto/homepage/20/content/shoes.png"}}" alt="" /></p>
+            <a href="#">Shop Now</a>
+        </div>
+    </div>
+    <div class="item" style="position:relative;">
+        <img src="{{media url="wysiwyg/smartwave/porto/homepage/20/content/home_shoes.jpg"}}" alt="" />
+        <div class="content" style="position:absolute;right:15%;top:20%">
+            <h3>Adidas Ultra Boost</h3>
+            <p><img src="{{media url="wysiwyg/smartwave/porto/homepage/20/content/shoes.png"}}" alt="" /></p>
+            <a href="#">Shop Now</a>
+        </div>
+    </div>
+    <div class="item" style="position:relative;">
+        <img src="{{media url="wysiwyg/smartwave/porto/homepage/20/content/home_shoes.jpg"}}" alt="" />
+        <div class="content" style="position:absolute;right:15%;top:20%">
+            <h3>Adidas Ultra Boost</h3>
+            <p><img src="{{media url="wysiwyg/smartwave/porto/homepage/20/content/shoes.png"}}" alt="" /></p>
+            <a href="#">Shop Now</a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    require([
+        'jquery',
+        'owl.carousel/owl.carousel.min'
+    ], function ($) {
+        var owl_20 = $("#home-content-slider-demo-20").owlCarousel({
+            items: 1,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplayHoverPause: true,
+            dots: true,
+            navRewind: true,
+            animateIn: 'fadeIn',
+            animateOut: 'fadeOut',
+            loop: true,
+            nav: false,
+            navText: ["<em class='porto-icon-chevron-left'></em>","<em class='porto-icon-chevron-right'></em>"]
+        });
+    });
+</script>
+{{block class="Smartwave\Porto\Block\Template" template="ajaxproducts/ajaxproducts.phtml"}}
+<div class="full-width-image" style="background:url({{media url="wysiwyg/smartwave/porto/homepage/20/content/home_golf.jpg"}}) center no-repeat;background-size: cover;">
+    <h3>Explore the best of you.</h3>
+    <a href="#">Shop By Golf</a>
+</div>
+<style type="text/css">
+@media (min-width: 768px) {
+    #featured_product {
+        padding: 0 85px;
+    }
+}
+h2.filterproduct-title {
+    background: none;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    color: #000;
+    margin-top: 90px;
+    margin-bottom: 80px;
+}
+.filterproduct-title .content {
+    padding: 0;
+    background-color: transparent;
+}
+body.layout-fullwidth.cms-index-index .page-main {
+    padding: 0;
+}
+.columns .column.main {
+    padding: 0;
+}
+.owl-theme .owl-controls {
+    margin: 0;
+}
+#home-content-slider-demo-20.owl-theme .owl-dots .owl-dot span {
+    background: transparent;
+    border: 2px solid #fff;
+}
+#home-content-slider-demo-20.owl-theme .owl-dots .owl-dot.active span, #home-content-slider-demo-20 .owl-theme .owl-dots .owl-dot:hover span {
+    background: #fff;
+}
+#home-content-slider-demo-20.owl-bottom-narrow .owl-controls {
+    bottom: 50px;
+}
+.product-item-photo {
+    padding: 0;
+    border: 0;
+}
+.product.actions, .product-item .product-reviews-summary {
+    display: none;
+}
+.product-item-name.product.name > a {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #000;
+}
+.product-item-name.product.name > a:hover {
+    text-decoration: none;
+}
+.page-header.type13 {
+    background: transparent;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    border: 0;
+}
+@media (max-width: 767px) {
+    h2.filterproduct-title {
+        margin: 40px 0;
+        font-size: 25px;
+    }
+    #home-content-slider-demo-20.owl-bottom-narrow .owl-controls {
+        bottom: 5px;
+    }
+}
+</style>]]></content>
+         <is_active>1</is_active>
+         <page_layout>1column</page_layout>
+         <layout_update_xml><![CDATA[<referenceContainer name="page.top">
+    <block class="Magento\Cms\Block\Block" name="home_slider">
+        <arguments>
+            <argument name="block_id" xsi:type="string">porto_homeslider_20</argument>
+        </arguments>
+    </block>
+</referenceContainer>]]></layout_update_xml>
+      </cms_item>
+      <cms_item>
          <title>Porto - About Us</title>
          <identifier>about-porto</identifier>
          <content><![CDATA[<br/>
@@ -2393,6 +2632,213 @@ body.boxed .page-wrapper {
         </div>
     </div>
 </div>]]></content>
+         <is_active>1</is_active>
+         <page_layout>1column</page_layout>
+         <layout_update_xml><![CDATA[]]></layout_update_xml>
+      </cms_item>
+      <cms_item>
+         <title>Porto - About Us 2</title>
+         <identifier>about-porto-2</identifier>
+         <content><![CDATA[<div class="content-row" style="border: 0;">
+    <h2>THE NEW WAY TO SUCCESS</h2>
+    <h4>Who we are</h4>
+    <div class="row">
+        <div class="col-md-6">
+            <p>Aliquam consectetur et lorem semper scelerisque. Proin est nibh, vestibulum vitae congue nec, tristique eu justo. Maecenas eu nunc lacinia, porta lorem vitae, viverra velit. Nulla dolor libero, rhoncus quis luctus eu, fermentum sed leo. Morbi ut risus porttitor odio sodales pulvinar. Sed gravida nulla sed sapien vulputate, eget malesuada justo egestas. Pellentesque sem mi, vulputate ac iaculis sit amet, sagittis feugiat dui. Proin non pellentesque leo. Vestibulum varius laoreet posuere. Etiam fringilla diam odio.</p>
+            <p>Nulla felis nibh, bibendum a leo ut, egestas ornare felis. Nam pretium mauris justo, eget commodo est fringilla vel. Proin condimentum, lacus sit amet finibus gravida, sapien ligula mattis leo, sit amet mattis leo lacus sit amet lectus. Nulla facilisi. Etiam porta iaculis velit id pulvinar. Sed dolor odio, eleifend eget aliquam vitae, efficitur vitae dolor. Integer ornare neque ac leo sollicitudin, at vestibulum ante scelerisque. Nullam ut elit sed lorem tempus feugiat in et lectus. Mauris interdum molestie placerat. Nullam dolor nunc, elementum et tincidunt id, vestibulum quis turpis. Integer imperdiet a eros a laoreet. Nam mattis vel ligula non imperdiet. Suspendisse potenti. Fusce purus sem, dapibus eu fermentum eget, aliquam vehicula ligula.</p>
+        </div>
+        <div class="col-md-6">
+            <p>Quisque congue dignissim dui sed luctus. Morbi nec mi vitae magna finibus ullamcorper. Etiam mattis blandit convallis. Suspendisse eu elementum leo. Vestibulum molestie nunc et efficitur egestas. Vivamus arcu lectus, laoreet vel consectetur bibendum, elementum non nunc. Proin porttitor velit odio, ac mattis quam tincidunt eget. Fusce semper nunc eget efficitur efficitur. Nam ullamcorper, enim id tincidunt feugiat, velit mauris fermentum nulla, at tempor eros turpis sit amet massa. Ut a semper lectus, sed hendrerit risus. In hac habitasse platea dictumst. Curabitur venenatis cursus posuere. Praesent turpis nisi, aliquam at facilisis non, sagittis vel urna. Donec diam lorem, feugiat vitae laoreet in, sagittis a lorem.</p>
+            <p>Aliquam consectetur et lorem semper scelerisque. Proin est nibh, vestibulum vitae congue nec, tristique eu justo. Maecenas eu nunc lacinia, porta lorem vitae, viverra velit. Nulla dolor libero, rhoncus quis luctus eu, fermentum sed leo. Morbi ut risus porttitor odio sodales pulvinar. Sed gravida nulla sed sapien vulputate, eget malesuada justo egestas. Pellentesque sem mi, vulputate ac iaculis sit amet, sagittis feugiat dui. Proin non pellentesque leo. Vestibulum varius laoreet posuere. Etiam fringilla diam odio.</p>
+        </div>
+    </div>
+</div>
+<div class="content-row">
+    <h2>OUR HISTORY</h2>
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col-md-5">
+            <div id="custom-owl-slider-aboutus-1" class="owl-carousel">
+                <div class="item">
+                    <img src="{{media url="wysiwyg/smartwave/porto/aboutus/slide1.jpg"}}" alt="" />
+                </div>
+                <div class="item">
+                    <img src="{{media url="wysiwyg/smartwave/porto/aboutus/slide2.jpg"}}" alt="" />
+                </div>
+                <div class="item">
+                    <img src="{{media url="wysiwyg/smartwave/porto/aboutus/slide3.jpg"}}" alt="" />
+                </div>
+            </div>
+            <script type="text/javascript">
+                require([
+                    'jquery',
+                    'owl.carousel/owl.carousel.min'
+                ], function ($) {
+                    $("#custom-owl-slider-aboutus-1").owlCarousel({
+                        items: 1,
+                        autoplay: false,
+                        autoplayTimeout: 5000,
+                        autoplayHoverPause: true,
+                        dots: true,
+                        nav: false,
+                        navRewind: true,
+                        animateIn: 'fadeIn',
+                        animateOut: 'fadeOut',
+                        loop: true
+                    });
+                });
+            </script>
+        </div>
+        <div class="col-md-7">
+            <h4>2014</h4>
+            <p>Aliquam consectetur et lorem semper scelerisque. Proin est nibh, vestibulum vitae congue nec, tristique eu justo. Maecenas eu nunc lacinia, porta lorem vitae, viverra velit. Nulla dolor libero, rhoncus quis luctus eu, fermentum sed leo. Morbi ut risus porttitor odio sodales pulvinar. Sed gravida nulla sed sapien vulputate, eget malesuada justo egestas. Pellentesque sem mi, vulputate ac iaculis sit amet, sagittis feugiat dui. Proin non pellentesque leo. Vestibulum varius laoreet posuere. Etiam fringilla diam odio.</p>
+            <p>Nulla felis nibh, bibendum a leo ut, egestas ornare felis. Nam pretium mauris justo, eget commodo est fringilla vel. Proin condimentum, lacus sit amet finibus gravida, sapien ligula mattis leo, sit amet mattis leo lacus sit amet lectus. Nulla facilisi. Etiam porta iaculis velit id pulvinar. Sed dolor odio, eleifend eget aliquam vitae, efficitur vitae dolor. Integer ornare neque ac leo sollicitudin, at vestibulum ante scelerisque. Nullam ut elit sed lorem tempus feugiat in et lectus. Mauris interdum molestie placerat. Nullam dolor nunc, elementum et tincidunt id, vestibulum quis turpis. Integer imperdiet a eros a laoreet. Nam mattis vel ligula non imperdiet. Suspendisse potenti. Fusce purus sem, dapibus eu fermentum eget, aliquam vehicula ligula.</p>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col-md-7">
+            <h4>2015</h4>
+            <p>Aliquam consectetur et lorem semper scelerisque. Proin est nibh, vestibulum vitae congue nec, tristique eu justo. Maecenas eu nunc lacinia, porta lorem vitae, viverra velit. Nulla dolor libero, rhoncus quis luctus eu, fermentum sed leo. Morbi ut risus porttitor odio sodales pulvinar. Sed gravida nulla sed sapien vulputate, eget malesuada justo egestas. Pellentesque sem mi, vulputate ac iaculis sit amet, sagittis feugiat dui. Proin non pellentesque leo. Vestibulum varius laoreet posuere. Etiam fringilla diam odio.</p>
+            <p>Nulla felis nibh, bibendum a leo ut, egestas ornare felis. Nam pretium mauris justo, eget commodo est fringilla vel. Proin condimentum, lacus sit amet finibus gravida, sapien ligula mattis leo, sit amet mattis leo lacus sit amet lectus. Nulla facilisi. Etiam porta iaculis velit id pulvinar. Sed dolor odio, eleifend eget aliquam vitae, efficitur vitae dolor. Integer ornare neque ac leo sollicitudin, at vestibulum ante scelerisque. Nullam ut elit sed lorem tempus feugiat in et lectus. Mauris interdum molestie placerat. Nullam dolor nunc, elementum et tincidunt id, vestibulum quis turpis. Integer imperdiet a eros a laoreet. Nam mattis vel ligula non imperdiet. Suspendisse potenti. Fusce purus sem, dapibus eu fermentum eget, aliquam vehicula ligula.</p>
+        </div>
+        <div class="col-md-5">
+            <div id="custom-owl-slider-aboutus-2" class="owl-carousel">
+                <div class="item">
+                    <img src="{{media url="wysiwyg/smartwave/porto/aboutus/slide2.jpg"}}" alt="" />
+                </div>
+                <div class="item">
+                    <img src="{{media url="wysiwyg/smartwave/porto/aboutus/slide3.jpg"}}" alt="" />
+                </div>
+                <div class="item">
+                    <img src="{{media url="wysiwyg/smartwave/porto/aboutus/slide1.jpg"}}" alt="" />
+                </div>
+            </div>
+            <script type="text/javascript">
+                require([
+                    'jquery',
+                    'owl.carousel/owl.carousel.min'
+                ], function ($) {
+                    $("#custom-owl-slider-aboutus-2").owlCarousel({
+                        items: 1,
+                        autoplay: false,
+                        autoplayTimeout: 5000,
+                        autoplayHoverPause: true,
+                        dots: true,
+                        nav: false,
+                        navRewind: true,
+                        animateIn: 'fadeIn',
+                        animateOut: 'fadeOut',
+                        loop: true
+                    });
+                });
+            </script>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col-md-5">
+            <div id="custom-owl-slider-aboutus-3" class="owl-carousel">
+                <div class="item">
+                    <img src="{{media url="wysiwyg/smartwave/porto/aboutus/slide3.jpg"}}" alt="" />
+                </div>
+                <div class="item">
+                    <img src="{{media url="wysiwyg/smartwave/porto/aboutus/slide1.jpg"}}" alt="" />
+                </div>
+                <div class="item">
+                    <img src="{{media url="wysiwyg/smartwave/porto/aboutus/slide2.jpg"}}" alt="" />
+                </div>
+            </div>
+            <script type="text/javascript">
+                require([
+                    'jquery',
+                    'owl.carousel/owl.carousel.min'
+                ], function ($) {
+                    $("#custom-owl-slider-aboutus-3").owlCarousel({
+                        items: 1,
+                        autoplay: false,
+                        autoplayTimeout: 5000,
+                        autoplayHoverPause: true,
+                        dots: true,
+                        nav: false,
+                        navRewind: true,
+                        animateIn: 'fadeIn',
+                        animateOut: 'fadeOut',
+                        loop: true
+                    });
+                });
+            </script>
+        </div>
+        <div class="col-md-7">
+            <h4>2016</h4>
+            <p>Aliquam consectetur et lorem semper scelerisque. Proin est nibh, vestibulum vitae congue nec, tristique eu justo. Maecenas eu nunc lacinia, porta lorem vitae, viverra velit. Nulla dolor libero, rhoncus quis luctus eu, fermentum sed leo. Morbi ut risus porttitor odio sodales pulvinar. Sed gravida nulla sed sapien vulputate, eget malesuada justo egestas. Pellentesque sem mi, vulputate ac iaculis sit amet, sagittis feugiat dui. Proin non pellentesque leo. Vestibulum varius laoreet posuere. Etiam fringilla diam odio.</p>
+            <p>Nulla felis nibh, bibendum a leo ut, egestas ornare felis. Nam pretium mauris justo, eget commodo est fringilla vel. Proin condimentum, lacus sit amet finibus gravida, sapien ligula mattis leo, sit amet mattis leo lacus sit amet lectus. Nulla facilisi. Etiam porta iaculis velit id pulvinar. Sed dolor odio, eleifend eget aliquam vitae, efficitur vitae dolor. Integer ornare neque ac leo sollicitudin, at vestibulum ante scelerisque. Nullam ut elit sed lorem tempus feugiat in et lectus. Mauris interdum molestie placerat. Nullam dolor nunc, elementum et tincidunt id, vestibulum quis turpis. Integer imperdiet a eros a laoreet. Nam mattis vel ligula non imperdiet. Suspendisse potenti. Fusce purus sem, dapibus eu fermentum eget, aliquam vehicula ligula.</p>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+.content-row {
+    border-top: 1px solid #dfdfdf;
+    padding: 40px 0;
+}
+.content-row:first-child {
+    border-top: 0;
+}
+h2 {
+    font-family: "Oswald";
+    font-size: 30px;
+    color: #000;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0;
+    margin-bottom: 60px;
+    line-height: 1;
+}
+h4 {
+    font-size: 20px;
+    font-weight: 400;
+    color: #000;
+    line-height: 1;
+    margin: 0;
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+@media(min-width: 1680px) {
+    .content-row {
+        padding: 60px 100px;
+    }
+    .content-row > .row {
+        margin: 0 -30px;
+    }
+    .content-row > .row > div {
+        padding: 0 30px;
+    }
+    h2 {
+        font-size: 40px;
+        margin-bottom: 80px;
+    }
+    h4 {
+        font-size: 25px;
+        margin-bottom: 40px;
+    }
+}
+@media(min-width: 1900px) {
+    .content-row {
+        padding: 80px 190px;
+    }
+    .content-row > .row {
+        margin: 0 -50px;
+    }
+    .content-row > .row > div {
+        padding: 0 50px;
+    }
+    h2 {
+        font-size: 50px;
+        margin-bottom: 100px;
+    }
+    h4 {
+        font-size: 30px;
+        margin-bottom: 50px;
+    }
+}
+</style>]]></content>
          <is_active>1</is_active>
          <page_layout>1column</page_layout>
          <layout_update_xml><![CDATA[]]></layout_update_xml>

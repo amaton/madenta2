@@ -24,6 +24,16 @@ class Demo extends \Magento\Config\Block\System\Config\Form\Field
     
     protected $_demoVersion;
     
+    private $_helper;
+    
+    public function __construct(
+        \Magento\Backend\Block\Template\Context $context,
+        \Smartwave\Porto\Helper\Data $helper
+    ) {
+        $this->_helper = $helper;
+        
+        parent::__construct($context);
+    }
     /**
      * Set Button Label
      *
@@ -124,15 +134,22 @@ class Demo extends \Magento\Config\Block\System\Config\Form\Field
         if($demo_version) {
             $this->setDemoVersion($demo_version);
         }
+        
+        $after_html = "";
+        $button_class = "";
+        if(!$this->_helper->checkPurchaseCode()) {
+            $button_class = "disabled";
+            $after_html = '<em style="color:#f00;font-size:10px;line-height:1;">Activation is required.</em>';
+        }
         $this->addData(
             [
                 'button_label' => __($buttonLabel),
                 'demo_version' => $demo_version,
+                'button_class' => $button_class,
                 'html_id' => $element->getHtmlId(),
                 'ajax_url' => $this->_urlBuilder->getUrl($action),
             ]
         );
-
-        return $this->_toHtml();
+        return $this->_toHtml().$after_html;
     }
 }

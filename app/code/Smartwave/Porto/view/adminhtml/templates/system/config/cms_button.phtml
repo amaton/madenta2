@@ -21,7 +21,8 @@ require(['prototype'], function(){
         var resultMessage = $('import_result<?php echo $block->getImportType(); ?>');
 
         params = {
-            import_type: '<?php echo $block->getImportType(); ?>'
+            import_type: '<?php echo $block->getImportType(); ?>',
+            demo_version: document.getElementById('porto_settings_install_demo_version').value
         };
 
         new Ajax.Request('<?php echo $block->getAjaxUrl() ?>', {
@@ -62,7 +63,7 @@ require(['prototype'], function(){
 }
 </style>
 <div class="actions actions-import-data">
-    <button onclick="javascript:import<?php echo $block->getImportType(); ?>(); return false;" class="action-import-data" type="button" id="<?php echo $block->getHtmlId() ?>">
+    <button onclick="<?php if($block->getButtonClass() != 'disabled'): ?>javascript:import<?php echo $block->getImportType(); ?>();<?php endif; ?> return false;" class="action-import-data <?php echo $block->getButtonClass(); ?>" type="button" id="<?php echo $block->getHtmlId() ?>">
         <span><?php echo $block->escapeHtml($block->getButtonLabel()) ?></span>
     </button>
     <div id="import_result<?php echo $block->getImportType(); ?>" class="message-validation hidden message"></div>

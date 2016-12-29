@@ -18,6 +18,7 @@
 ?>
     <div class="product info detailed <?php echo $tab_style; ?>">
         <?php $layout = $block->getLayout(); ?>
+        <?php if(!$tab_style || $tab_style != "sticky"): ?>
         <div class="product data items" data-mage-init='{"tabs":{"openedState":"active"}}'>
             <?php foreach ($detailedInfoGroup as $name):?>
                 <?php
@@ -68,18 +69,119 @@
                 }
             ?>
         </div>
-    <?php if($tab_style && $tab_style == "vertical"): ?>
+        <?php elseif($tab_style && $tab_style == "sticky"): ?>
+        <div class="product data items">
+            <?php foreach ($detailedInfoGroup as $name):?>
+                <?php
+                    $html = $layout->renderElement($name);
+                    if (!trim($html)) {
+                        continue;
+                    }
+                    $alias = $layout->getElementAlias($name);
+                    $label = $block->getChildData($alias, 'title');
+                    $alias = str_replace(".","_",$alias);
+                ?>
+                <div class="data item title">
+                    <a class="data switch" href="#<?php /* @escapeNotVerified */ echo $alias; ?>">
+                        <?php /* @escapeNotVerified */ echo $label; ?>
+                    </a>
+                </div>
+            <?php endforeach;?>
+            <?php
+                if($custom_cms_tabs = $_helper->getCustomTabs($block->getProduct())) {
+                    $i = 1;
+                    foreach($custom_cms_tabs as $_item) {
+            ?>
+                <div class="data item title">
+                    <a class="data switch" href="#<?php /* @escapeNotVerified */ echo "custom-".$i; ?>">
+                        <?php /* @escapeNotVerified */ echo $_item['tab_title']; ?>
+                    </a>
+                </div>
+            <?php
+                        $i++;
+                    }
+                }
+            ?>
+            <?php foreach ($detailedInfoGroup as $name):?>
+                <?php
+                    $html = $layout->renderElement($name);
+                    if (!trim($html)) {
+                        continue;
+                    }
+                    $alias = $layout->getElementAlias($name);
+                    $label = $block->getChildData($alias, 'title');
+                    $alias = str_replace(".","_",$alias);
+                ?>
+                <div class="data item content" id="<?php /* @escapeNotVerified */ echo $alias; ?>">
+                    <?php /* @escapeNotVerified */ echo $html; ?>
+                </div>
+            <?php endforeach;?>
+            <?php
+                if($custom_cms_tabs = $_helper->getCustomTabs($block->getProduct())) {
+                    $i = 1;
+                    foreach($custom_cms_tabs as $_item) {
+            ?>
+                <div class="data item content" id="<?php /* @escapeNotVerified */ echo "custom-".$i; ?>">
+                    <?php /* @escapeNotVerified */ echo $_item['tab_content']; ?>
+                </div>
+            <?php
+                        $i++;
+                    }
+                }
+            ?>
+        </div>
+        <?php endif; ?>
         <script type="text/javascript">
             require([
                 'jquery'
             ], function ($) {
                 $(document).ready(function(){
+                <?php if($tab_style && $tab_style == "vertical"): ?>
                     $(".product.info.detailed.vertical .product.data.items .data.item.title").off("classadded").on("classadded",function(){
                         $(this).parent().css("min-height",$(this).next().outerHeight()+"px");
                     });
+                <?php elseif($tab_style && $tab_style == "sticky"): ?>
+                    var sticky_tabs;
+                    var is_sticky = false;
+                    $(window).scroll(function(){
+                        if($(window).scrollTop() >= $(".product.info.detailed").offset().top-50){
+                            if(!is_sticky){
+                                $(".product.info.detailed.sticky").before('<div class="product-tabs-container"><div class="container"></div></div>');
+                                $(".product.info.detailed.sticky .product.data.items > .item.title").each(function(){
+                                    $(".product-tabs-container > .container").append($(this).clone().detach());
+                                });
+                                $(".product-tabs-container .item.title > a").off("click").on("click", function(){
+                                    $($(this).attr("href")).scrollToMe();
+                                    return false;
+                                });
+                                <?php if ($porto_helper->getConfig('porto_settings/header/sticky_header')): ?>
+                                $(".product-tabs-container").addClass("has-sticky-header");
+                                <?php endif; ?>
+                                <?php if ($porto_helper->getConfig('porto_settings/header/mobile_sticky_header')): ?>
+                                $(".product-tabs-container").addClass("has-mobile-sticky-header");
+                                <?php endif; ?>
+                                is_sticky = true;
+                            }
+                        } else {
+                            $(".product-tabs-container").remove();
+                            is_sticky = false;
+                        }
+                    });
+                    $(".product.info.detailed.sticky .product.data.items > .item.title > a").off("click").on("click", function(){
+                        $($(this).attr("href")).scrollToMe();
+                        return false;
+                    });
+                    $(".product-reviews-summary .reviews-actions a.action.view").off("click").on("click", function(){
+                        $("#reviews").scrollToMe();
+                        return false;
+                    });
+                    $(".product-reviews-summary .reviews-actions a.action.add").off("click").on("click", function(){
+                        $("#review-form").scrollToMe();
+                        return false;
+                    });
+                <?php endif; ?>
                 });
             });
         </script>    
-    <?php endif; ?>
     </div>
 <?php endif; ?>
