@@ -53,6 +53,7 @@ $flex_grid = "";
     $image_width = ($_category_config['ratio_width'])?$_category_config['ratio_width']:300;
     $image_height = ($_category_config['ratio_height'])?$_category_config['ratio_height']:300;
     ?>
+
     <div class="products wrapper <?php echo $viewMode; ?> <?php echo $columns; ?> <?php echo $flex_grid; ?> products-<?php echo $viewMode; ?>">
         <?php $iterator = 1; ?>
         <ol class="products list items product-items">
@@ -125,10 +126,46 @@ $flex_grid = "";
                                 <div class="actions-primary">
                                     <?php if ($_product->isSaleable()): ?>
                                         <?php $postParams = $block->getAddToCartPostParams($_product); ?>
-                                        <form data-role="tocart-form" action="<?php echo $postParams['action']; ?>" method="post">
+                                        <form data-role="tocart-form" action="<?php echo $postParams['action']; ?>" id="product_addtocart_form_<?php echo $_product->getId()?>" method="post">
                                             <input type="hidden" name="product" value="<?php echo $postParams['data']['product']; ?>">
                                             <input type="hidden" name="<?php echo Action::PARAM_NAME_URL_ENCODED; ?>" value="<?php echo $postParams['data'][Action::PARAM_NAME_URL_ENCODED]; ?>">
                                             <?php echo $block->getBlockHtml('formkey')?>
+					    <?php $_arrutls = new \Magento\Framework\Stdlib\ArrayUtils();
+                                            $_attributes = $_product->getTypeId() == 'configurable' ? $_arrutls->decorateArray($_product->getTypeInstance()->getConfigurableAttributes($_product)) : [] ?>
+                                            <?php if (count($_attributes)): ?>
+                                                <?php foreach ($_attributes as $_attribute): ?>
+                                                <select name="super_attribute[<?php /* @escapeNotVerified */
+                                                echo $_attribute->getAttributeId() ?>]" style="height:33px; width:70%;"
+                                                        data-selector="super_attribute[<?php /* @escapeNotVerified */
+                                                        echo $_attribute->getAttributeId() ?>]"
+                                                        data-validate="{required:true}"
+                                                        id="attribute<?php /* @escapeNotVerified */
+                                                        echo $_attribute->getAttributeId() ?>"
+                                                        class="super-attribute-select">
+                                                    <option value=""><?php /* @escapeNotVerified */	
+                                                        echo __('Choose an Option...') ?></option> 
+                                                </select>
+                                            <?php endforeach;
+                                            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+					    $prodRepo = $objectManager->get('\Magento\Catalog\Model\ProductRepository');
+	                                    $registry = $objectManager->get('\Magento\Framework\Registry');
+                                            $product = $prodRepo->getById($_product->getId());
+                                            $registry->unregister('product');
+                                            $registry->register('product', $product);
+                                            $cnfBlock = $this->getLayout()->createBlock('Magento\Swatches\Block\Product\Renderer\Listing\Configurable', '', [
+                                                'configurableAttributeData' => $objectManager->get('Magento\ConfigurableProduct\Model\ConfigurableAttributeData'),
+                                                'helper' => $this->helper('\Magento\ConfigurableProduct\Helper\Data'),
+                                                'catalogProduct' => $this->helper('Magento\Catalog\Helper\Product')])->setProduct($product); ?>                               
+						<script type="text/x-magento-init">
+                                                    {
+                                                        "#product_addtocart_form_<?php echo $_product->getId() ?>": {
+                                                            "configurable": {
+                                                                "spConfig": <?php /* @escapeNotVerified */ echo $cnfBlock->getJsonConfig() ?>
+                                                            }
+                                                        }
+						}
+                                             </script>                        
+			                     <?php endif;?>
                                             <button type="submit"
                                                     title="<?php echo $block->escapeHtml(__('Add to Cart')); ?>"
                                                     class="action tocart primary">
@@ -242,9 +279,39 @@ $flex_grid = "";
                                 <div class="actions-primary">
                                     <?php if ($_product->isSaleable()): ?>
                                         <?php $postParams = $block->getAddToCartPostParams($_product); ?>
-                                        <form data-role="tocart-form" action="<?php echo $postParams['action']; ?>" method="post">
+                                        <form data-role="tocart-form" id="product_addtocart_form_<?php echo $_product->getId()?>"  action="<?php echo $postParams['action']; ?>" method="post">
                                             <input type="hidden" name="product" value="<?php echo $postParams['data']['product']; ?>">
                                             <input type="hidden" name="<?php echo Action::PARAM_NAME_URL_ENCODED; ?>" value="<?php echo $postParams['data'][Action::PARAM_NAME_URL_ENCODED]; ?>">
+                                            <?php $_arrutls = new \Magento\Framework\Stdlib\ArrayUtils();
+                                            $_attributes = $_product->getTypeId() == 'configurable' ? $_arrutls->decorateArray($_product->getTypeInstance()->getConfigurableAttributes($_product)) : [] ?>
+                                            <?php if (count($_attributes)): ?>
+                                                <?php foreach ($_attributes as $_attribute): ?>
+                                                <select name="super_attribute[<?php /* @escapeNotVerified */
+                                                echo $_attribute->getAttributeId() ?>]"
+                                                        data-selector="super_attribute[<?php /* @escapeNotVerified */
+                                                        echo $_attribute->getAttributeId() ?>]"
+                                                        data-validate="{required:true}"
+                                                        id="attribute<?php /* @escapeNotVerified */
+                                                        echo $_attribute->getAttributeId() ?>"
+                                                        class="super-attribute-select">
+                                                    <option value=""><?php /* @escapeNotVerified */
+                                                        echo __('Choose an Option...') ?></option>
+                                                </select>
+                                            <?php endforeach;
+                                            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+					    $prodRepo = $objectManager->get('\Magento\Catalog\Model\ProductRepository');
+	                                    $registry = $objectManager->get('\Magento\Framework\Registry');
+                                            $product = $prodRepo->getById($_product->getId());
+                                            $registry->unregister('product');
+                                            $registry->register('product', $product);
+                                            $cnfBlock = $this->getLayout()->createBlock('Magento\Swatches\Block\Product\Renderer\Listing\Configurable', '', [
+                                                'configurableAttributeData' => $objectManager->get('Magento\ConfigurableProduct\Model\ConfigurableAttributeData'),
+                                                'helper' => $this->helper('\Magento\ConfigurableProduct\Helper\Data'),
+                                                'catalogProduct' => $this->helper('Magento\Catalog\Helper\Product')])->setProduct($product); ?>
+						<script>
+                                                        ProductConfigure.spConfig = new Product.Config(<?php /* @escapeNotVerified */ echo $cnfBlock->getJsonConfig() ?>);
+                                                </script>
+                                            <?php endif; ?>
                                             <?php echo $block->getBlockHtml('formkey')?>
                                             <button type="submit"
                                                     title="<?php echo $block->escapeHtml(__('Add to Cart')); ?>"
