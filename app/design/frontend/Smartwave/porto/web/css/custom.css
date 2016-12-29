@@ -23,24 +23,18 @@ body > p {
 }
 
 .header-pages-menu {
-    background: url(/pub/media/porto/page_bg/default/h_f.png) repeat-x;
+    background: url(/pub/media/porto/page_bg/default/h_f.png) repeat-x !important;;
     background-position: 0 0;
     height: 38px;
     width: 100%;
 }
 
+.header-pages-menu .wrapper {
+    background: none !important;
+}
+
 .header-pages-menu ul {
-    text-align: left;
-}
-
-.header-pages-menu li {
-    list-style: none;
-    display: inline-block;
-}
-
-.header-pages-menu li a {
-    padding: 10px;
-    color: #666;
+    float: left !important;
 }
 
 .frame-delivery-payment{margin-bottom: 8px;}
