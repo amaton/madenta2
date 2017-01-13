@@ -12,6 +12,14 @@ body > p {
     clear:both;
 }
 
+.logo {
+    z-index: 0 !important;
+}
+
+.searchsuite-autocomplete {
+    left: 0 !important;
+}
+
 .columns {
     padding-top: 15px;
 }
@@ -3310,6 +3318,7 @@ body > .onepage-cat.category-list {
         content: '\f801';
         position: absolute;
         right: 5px;
+
     }
     .page-header.type13 .sw-megamenu.navigation li.level0 {
         position: relative !important;
