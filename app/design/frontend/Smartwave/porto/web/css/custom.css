@@ -20,8 +20,20 @@ body > p {
     left: 0 !important;
 }
 
+.nav-sections-item-content > .navigation {
+    z-index: 3 !important;
+}
+
+header.page-header.type2 {
+    margin: 0;
+}
+
+.page-header {
+    padding-bottom: 0 !important;
+}
+
 .columns {
-    padding-top: 15px;
+    padding-top: 0 !important;
 }
 
 .pages {
