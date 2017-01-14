@@ -41,6 +41,10 @@ header.page-header.type2 {
     max-width: 1140px;
 }
 
+.footer-bottom .social-icons {
+    display: none;
+}
+
 .pages {
     clear: both;
     margin: 0 auto;
