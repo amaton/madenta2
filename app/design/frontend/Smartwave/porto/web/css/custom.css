@@ -36,6 +36,11 @@ header.page-header.type2 {
     padding-top: 0 !important;
 }
 
+.page-title-wrapper {
+    margin: 20px auto;
+    max-width: 1140px;
+}
+
 .pages {
     clear: both;
     margin: 0 auto;
