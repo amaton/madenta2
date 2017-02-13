@@ -66,6 +66,15 @@ header.page-header.type2 {
     float: left !important;
 }
 
+@media (min-width: 768px) {
+    .sw-megamenu.navigation li.level0.fullwidth > .submenu, .sw-megamenu.navigation li.level0.staticwidth > .submenu {
+        top: 56px;
+    }
+    .sticky-header .sw-megamenu.navigation li.level0.fullwidth > .submenu, .sw-megamenu.navigation li.level0.staticwidth > .submenu {
+        top: 62px;
+    }
+}
+
 .frame-delivery-payment{margin-bottom: 8px;}
 .frame-delivery-payment dt{padding: 0 0 0;}
 .frame-delivery-payment dd{padding: 5px 0 20px;}
