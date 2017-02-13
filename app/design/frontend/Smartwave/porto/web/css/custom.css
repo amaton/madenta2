@@ -68,8 +68,9 @@ header.page-header.type2 {
 .header-pages-menu ul {
     float: left !important;
 }
-
-
+.product-info-main .product.sku .type:after {
+    content:':';
+}
 
 @media (min-width: 768px) {
     .sw-megamenu.navigation li.level0.fullwidth > .submenu, .sw-megamenu.navigation li.level0.staticwidth > .submenu {
