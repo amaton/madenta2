@@ -66,6 +66,8 @@ header.page-header.type2 {
     float: left !important;
 }
 
+
+
 @media (min-width: 768px) {
     .sw-megamenu.navigation li.level0.fullwidth > .submenu, .sw-megamenu.navigation li.level0.staticwidth > .submenu {
         top: 56px;
@@ -132,9 +134,38 @@ header.page-header.type2 {
 .f-s_0, .f-s_0 .f-s_0 {
     font-size: 0;
 }
+
 .frame-benefits{padding: 0 !important; margin: 0 !important; position: relative;}
 .frame-benefits-product{margin: 0;padding: 0;overflow: hidden;}
-.items-benefits > li{position: relative;width: 25%;padding-top: 0; display: inline-block;}
+
+.frame-benefits {
+    background: #ECECEC;
+    border-bottom: 1px solid #fcfcfc;
+    padding: 18px 0 0;
+    position: relative;
+}
+.items-benefits > li {
+    position: relative;
+    padding-top: 0;
+    display: inline-block;
+}
+@media (min-width: 1205px) {
+    .frame-benefits {
+        background: url(/pub/media/porto/page_bg/default/h_f.png) repeat-x;
+        background-position: 0 -254px;
+        height: 97px !important;
+    }
+}
+@media (max-width: 1205px) {
+    .items-benefits > li {
+        width: 50% !important;
+    }
+}
+@media (max-width: 761px) {
+    .items-benefits > li {
+        width: 100% !important;
+    }
+}
 .items-benefits > li:before{content: "";width: 2px;height: 67px;position: absolute;top: 0;left: -27px;}
 .vertical-layout .items-benefits > li:before{left: -7px;}
 .items-benefits > li:first-child:before{display: none;}
@@ -145,14 +176,6 @@ header.page-header.type2 {
 .frame-benefits-product .frame-benefits{margin-bottom: 0;}
 .frame-benefits-product .frame-benefits:after{content: "";position: absolute;width: 110%;left: -5%;top: 100%;height: 5px;margin-top: -5px;-moz-box-shadow: 0 2px 4px #ece9e6;-webkit-box-shadow: 0 2px 4px #ece9e6;box-shadow: 0 2px 4px #ece9e6;}
 
-.frame-benefits {
-    background: url(/pub/media/porto/page_bg/default/h_f.png) repeat-x;
-    background-position: 0 -254px;
-    height: 97px;
-    border-bottom: 1px solid #fcfcfc;
-    padding: 18px 0 0;
-    position: relative;
-}
 .items-benefits > li:before{background-position: 0 -10px;}
 .frame-description-benefit p{color: #999;}
 .frame-symbol-benefit{text-align: center;width: 67px;height: 66px;position: relative; background: none; text-indent: -10px;display: inline-block; vertical-align: top;}
