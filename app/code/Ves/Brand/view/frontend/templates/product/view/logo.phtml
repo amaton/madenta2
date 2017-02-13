@@ -12,9 +12,6 @@ $show_brand_name = $data->getConfig("product_view_page/show_brand_name");
 	<?php
 	$i = 0;
 	$total = $brandCollection->count();
-	if($show_brand_text){
-		echo '<span class="brand-label">'.$brand_text.'</span>';
-	}
 	?>
 	<?php if($brand_layout_listing) { 
 		echo '<ul class="product-brands">';
@@ -24,9 +21,6 @@ $show_brand_name = $data->getConfig("product_view_page/show_brand_name");
 				<?php if($show_brand_image): ?>
 				<a href="<?php echo $_brand->getUrl(); ?>" title="<?php echo $_brand->getName(); ?>">
 				<img src="<?php echo $_brand->getThumbnailUrl(); ?>" alt="<?php echo $_brand->getName(); ?>"/></a>
-				<?php endif; ?>
-				<?php if($show_brand_name): ?>
-				<a href="<?php echo $_brand->getUrl(); ?>" title="<?php echo $_brand->getName(); ?>"><?php echo $_brand->getName(); ?></a>
 				<?php endif; ?>
 			</li>
 			<?php
@@ -38,9 +32,6 @@ $show_brand_name = $data->getConfig("product_view_page/show_brand_name");
 				<?php if($show_brand_image): ?>
 				<a href="<?php echo $_brand->getUrl(); ?>" title="<?php echo $_brand->getName(); ?>">
 				<img src="<?php echo $_brand->getThumbnailUrl(); ?>" alt="<?php echo $_brand->getName(); ?>"/></a>
-				<?php endif; ?>
-				<?php if($show_brand_name): ?>
-				<a href="<?php echo $_brand->getUrl(); ?>" title="<?php echo $_brand->getName(); ?>"><?php echo $_brand->getName(); ?></a>
 				<?php endif; ?>
 			</span>
 			<?php if($i<=($total-2)){ echo ', '; }  ?>
